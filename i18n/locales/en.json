@@ -1,13 +1,13 @@
 {
-  "siteName": "Skizophonic",
+  "siteName": "Abin Binoy",
   "languages": {
     "code": "en",
     "es": "Spanish",
     "en": "English"
   },
   "meta": {
-    "title": "Skizophonic",
-    "description": "Music band based in Benicasim and Castellón, Spain"
+    "title": "Abin Binoy",
+    "description": "Abin Binoy Portfolio"
   },
   "preloader": {
     "text": [
@@ -23,10 +23,10 @@
     "home": {
       "name": "Home",
       "title": "Home",
-      "heading": "What is Skizophonic?",
-      "block1": "The slowest band in history emerged in late 2003 between Benicàssim and Castellón, Spain, crafting an alternative rock sound shaped by classic rock influences.",
-      "block2": "However, in their restless pursuit of eclectic ideas, the members of Skizophonic gravitated toward garage, soul, and especially acid sounds, blending a mod spirit with subtle electronic touches.",
-      "block3": "Today, they survive as soldiers of fortune. If you have good taste and a discerning ear, you might appreciate them.",
+      "heading": "Who is Abin Binoy?",
+      "block1": "I'm Abin Binoy, a BCA graduate and dedicated Full-Stack Developer with over two years of experience, passionate about emerging technologies, continuous learning, and building innovative digital solutions.",
+      "block2": "Driven by my curiosity and passion for technology, I constantly explore emerging innovations, experiment with creative ideas, and build meaningful digital experiences that combine functionality, creativity, and modern design.",
+      "block3": "Outside the screen, I'm just someone who enjoys good music, random ideas, late-night curiosity, and making things unnecessarily complicated just to find a simpler solution.",
       "buttonHypnotic": "Listen to their music",
       "meta": {
         "title": "Home",
@@ -98,7 +98,7 @@
       },
       "meta": {
         "title": "Merch",
-        "description": "Skizophonic merchandise"
+        "description": "Abin Binoy tools"
       }
     },
     "privacy": {

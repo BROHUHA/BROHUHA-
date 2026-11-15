@@ -3,7 +3,7 @@
   <NuxtLoadingIndicator color="repeating-linear-gradient(to right,#ff0047 0%,#ffffff 50%,#00ffc7 100%)" />
   <NuxtLayout :key="route => route.fullPath">
     <VueLenis ref="lenisRef" :auto-raf="false" root>
-      <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir" />
+      <Html lang="en" dir="ltr" />
       <NuxtPage :page-key="route => route.fullPath" />
     </VueLenis>
   </NuxtLayout>
@@ -15,7 +15,6 @@
   import gsap from "gsap";
 
   const lenisRef = ref()
-  const head = useLocaleHead();
 
   // const lenis = useLenis(({ scroll }) => {
   //   // console.log(scroll)

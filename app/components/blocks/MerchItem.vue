@@ -4,7 +4,7 @@
       <AnimationReveal class="w-full" @start="isAnimationRevealStarted = true">
         <div class="item relative overflow-hiddenx">
           <div class="mask relative z-30 transition-all duration-400 ease-in-out rounded-xl">
-            <NuxtImg class="item-img w-full h-auto object-cover cursor-crosshair rounded-xl will-change-[filter]" :src="`/images/merch/${item.image}`" :alt="`Merch item - ${item.name}`" />
+            <img class="item-img w-full h-auto object-cover cursor-crosshair rounded-xl will-change-[filter]" loading="lazy" :src="`/images/merch/${item.image}`" :alt="`Merch item - ${item.name}`" />
           </div>
           <video ref="videoRef" class="item-bg-video absolute z-20 inset-0 w-full h-full object-cover transition-all duration-500 [clip-path:circle(46%_at_50%_50%)] mix-blend-darken" preload="auto" autoplay muted loop playsinline disableremoteplayback aria-hidden="true">
             <!-- <source src="/videos/spiral2_large.mp4" type="video/mp4" media="(min-width: 1920px)"> -->
@@ -17,7 +17,7 @@
         <h3 class="mt-3 will-change-[filter, text-shadow]">{{ item.name }}</h3>
       </AnimationReveal>
       <AnimationReveal>
-        <span class="block text-gray-500 will-change-[filter, text-shadow]">{{ $t('pages.merch.labels.noStock') }}</span>
+        <span class="block text-gray-500 will-change-[filter, text-shadow]">Not available</span>
       </AnimationReveal>
     </div>
   </div>

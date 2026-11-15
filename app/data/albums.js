@@ -12,7 +12,7 @@ export const albums = [
     releaseDate: '2017-04-07',
     recordLabel: 'Ventilador Music',
     meta: {
-      description: 'Video Rock is the fifth and latest album recorded by Skizophonic.',
+      description: 'Video Rock is the fifth and latest album recorded by Abin Binoy.',
     },
     player: {
       spotify: 'https://open.spotify.com/embed/album/55dCAnS0nH77fJFehhlNiZ',
@@ -78,7 +78,7 @@ export const albums = [
     releaseDate: '2013-09-14',
     recordLabel: 'Lemon Songs',
     meta: {
-      description: 'Velodrome is the fourth album recorded by Skizophonic.',
+      description: 'Velodrome is the fourth album recorded by Abin Binoy.',
     },
     player: {
       spotify: 'https://open.spotify.com/embed/album/55dCAnS0nH77fJFehhlNiZ',
@@ -146,7 +146,7 @@ export const albums = [
     releaseDate: '2011-02-28',
     recordLabel: '',
     meta: {
-      description: 'Gossip is the third album recorded by Skizophonic.',
+      description: 'Gossip is the third album recorded by Abin Binoy.',
     },
     player: {
       spotify: 'https://open.spotify.com/embed/album/55dCAnS0nH77fJFehhlNiZ',
@@ -209,7 +209,7 @@ export const albums = [
     releaseDate: '2009-09-19',
     recordLabel: '',
     meta: {
-      description: 'Living Room is the second album/EP recorded by Skizophonic.',
+      description: 'Living Room is the second album/EP recorded by Abin Binoy.',
     },
     player: {
       spotify: 'https://open.spotify.com/embed/album/55dCAnS0nH77fJFehhlNiZ',
@@ -269,7 +269,7 @@ export const albums = [
     releaseDate: '2008-05-01',
     recordLabel: '',
     meta: {
-      description: 'One is the first album recorded by Skizophonic.',
+      description: 'One is the first album recorded by Abin Binoy.',
     },
     player: {
       spotify: '',

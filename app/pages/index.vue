@@ -1,15 +1,15 @@
 <template>
   <div ref="homeTimelineRef">
-    <PreloaderFull v-if="!isPageLoaded" target=".timeline" :text1="$t('pages.home.preloader.text1')" :text2="$t('pages.home.preloader.text2')" @done="isPageLoaded = true" />
+    <PreloaderFull v-if="!isPageLoaded" target=".timeline" text1="loading waves" text2="syncing spiral" @done="isPageLoaded = true" />
 
     <div ref="timelineRef" class="timeline relative z-10 top-0 left-0 w-screen min-h-lvh">
-      <h1 class="sr-only">{{ $t('pages.home.title') }}</h1>
+      <h1 class="sr-only">Home</h1>
 
       <HeroHypnotic :play="isPageLoaded" class="hero">
         <AppLogo class="logo w-full h-full fill-white" />
       </HeroHypnotic>
 
-      <h2 class="sr-only">{{ $t('pages.home.heading') }}</h2>
+      <h2 class="sr-only">Who is Abin Binoy?</h2>
 
       <section ref="block1Ref" class="block1 absolute z-10 inset-0 flex flex-col items-center justify-center w-screen h-lvh">
         <div v-for="(video, index) in videos" :key="video.small" class="circles absolute top-0 left-0 w-full h-full" :class="`circle${index}`">
@@ -19,7 +19,7 @@
           </video>
         </div>
         <div class="container text-[clamp(1.5rem,_3.5vw,_3.5rem)] prose-black prose-p:leading-normal text-pretty">
-          <p class="relative z-30">{{ $t('pages.home.block1') }}</p>
+          <p class="relative z-30">I'm Abin Binoy, a BCA graduate and dedicated Full-Stack Developer with over two years of experience, passionate about emerging technologies, continuous learning, and building innovative digital solutions.</p>
         </div>
       </section>
 
@@ -33,7 +33,7 @@
           </video>
         </div>
         <div class="container py-12 lg:py-40 text-[clamp(1.5rem,_3.5vw,_3.5rem)] text-white text-pretty">
-          <p class="relative z-20">{{ $t('pages.home.block2') }}</p>
+          <p class="relative z-20">Driven by my curiosity and passion for technology, I constantly explore emerging innovations, experiment with creative ideas, and build meaningful digital experiences that combine functionality, creativity, and modern design.</p>
         </div>
       </section>
 
@@ -43,11 +43,11 @@
         </div>
 
         <div class="container flex flex-col items-center justify-center text-[clamp(1.5rem,_3.5vw,_3.5rem)] prose-white prose-p:leading-normal text-pretty text-white mix-blend-difference">
-          <p class="">{{ $t('pages.home.block3') }}</p>
+          <p class="">Outside the screen, I'm just someone who enjoys good music, random ideas, late-night curiosity, and making things unnecessarily complicated just to find a simpler solution.</p>
         </div>
 
         <div ref="buttonHypnoticRef" class="button-hypnotic absolute top-0 left-0 flex items-center justify-center w-full h-full p-4 sm:px-16">
-          <ButtonHypnotic to="music">{{ $t('pages.home.buttonHypnotic') }}</ButtonHypnotic>
+          <ButtonHypnotic to="/works">View works</ButtonHypnotic>
         </div>
       </section>
 
@@ -91,7 +91,6 @@
       'large': 'factories_720p.mp4',
     },
   }
-  const { t } = useI18n();
   const isPageLoaded = ref(false);
   const homeTimelineRef = useTemplateRef('homeTimelineRef');
   const timelineRef = useTemplateRef('timelineRef');
@@ -103,10 +102,10 @@
   let ctx;
 
   useSeoMeta({
-    title: `${t('pages.home.meta.title')} | ${t('siteName')}`,
-    description: t('pages.home.meta.description'),
-    ogTitle: `${t('pages.home.meta.title')} | ${t('siteName')}`,
-    ogDescription: t('pages.home.meta.description'),
+    title: 'Home | Abin Binoy',
+    description: 'Abin Binoy Portfolio',
+    ogTitle: 'Home | Abin Binoy',
+    ogDescription: 'Abin Binoy Portfolio',
   })
 
   onMounted(async () => {

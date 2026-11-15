@@ -27,16 +27,6 @@
     <g class="circle sound">
       <circle cx="357" cy="357" r="40" fill="black" />
     </g>
-    <g class="circle sound text uppercase text-[18.5px] font-black" fill="black">
-      <text>
-        <textPath href="#circlePath" startOffset="0">sound sound sound sound</textPath>
-      </text>
-    </g>
-    <!-- <g class="circle sound">
-      <circle cx="357" cy="357" r="28" fill="white" />
-    </g> -->
-    <!-- <path id="circlePath" fill="none" d="M357,357 m-75,0 a75,75 0 1,1 150,0 a75,75 0 1,1 -150,0" /> -->
-    <path id="circlePath" fill="none" d="M357,357 m-45,0 a45,45 0 1,1 90,0 a45,45 0 1,1 -90,0" />
   </svg>
 </template>
 
@@ -45,11 +35,8 @@
   import gsap from "gsap";
 
   onMounted(() => {
-    gsap.set('.anim-svg-circles circle, .anim-svg-circles text', {
+    gsap.set('.anim-svg-circles circle', {
       transformOrigin: 'center center'
-    })
-    gsap.set('.anim-svg-circles text', {
-      filter: isFirefoxMobile() ? 'blur(0px)' : 'blur(.5px)',
     })
     gsap.from('.anim-svg-circles circle', {
       scale: 0.84,
@@ -63,18 +50,5 @@
         yoyo: true
       },
     }, 0.6)
-
-    gsap.from('.anim-svg-circles text', {
-      scale: 0.9,
-      translateZ: 0,
-      autoAlpha: 0,
-      force3D: true,
-      filter: isFirefoxMobile() ? 'blur(0px)' : 'blur(3px)',
-      duration: 0.8,
-      ease: 'back(4)',
-      repeat: -1,
-      yoyo: true
-    }, 0.6)
-
   })
 </script>

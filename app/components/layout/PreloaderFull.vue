@@ -6,7 +6,7 @@
     <div ref="dot1Ref" class="dot1 fixed z-95 w-screen h-dvh bg-black will-change-[clip-path]" />
     <div ref="dot2Ref" class="dot2 fixed z-96 w-screen h-dvh bg-white will-change-[clip-path]" />
     <div ref="preloaderSubliminalTextRef" class="preloader-subliminal-text fixed z-95 inset-0 flex items-center justify-center w-screen h-dvh text-[clamp(1.1rem,5vw,2.8rem)] text-white font-bold uppercase mix-blend-difference">
-      {{ $t(`preloader.text[${randomIndex}]`) }}
+      {{ preloaderTexts[randomIndex] }}
     </div>
     <div ref="preloaderTextRef" class="preloader-text fixed z-95 grid place-items-center grid-cols-2 gap-7 w-full h-full text-[clamp(1rem,3vw,1.5rem)]">
       <span class="w-full inline-block text-right">
@@ -53,6 +53,14 @@
   const preloaderSubliminalTextRef = useTemplateRef('preloaderSubliminalTextRef');
   const route = useRoute()
   const routesAreLoaded = useState('routesAreLoadedFull', () => []);
+  const preloaderTexts = [
+    'Spiral of subliminal cadence',
+    'Mechanical ascent of noise',
+    'Synesthesia by hypermusic',
+    'Kaleidoscope of supersounds',
+    'Electric maze of waves',
+    'Tangent of a sonic citizen'
+  ];
   const randomIndex = import.meta.client ? Math.floor(Math.random() * 6) : 0;
   let ctx = gsap.context(() => { });
 

@@ -1,13 +1,13 @@
 <template>
   <div v-if="showPreloader" ref="preloaderRef" class="preloader fixed inset-0 z-100 w-screen h-dvh flex flex-col items-center justify-center bg-white text-black">
-    <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir" />
+    <Html lang="en" dir="ltr" />
     <div ref="logoCirclesRef" class="logo-circles w-40 h-40">
       <LogoCircles />
     </div>
     <div ref="dot1Ref" class="dot1 fixed z-20 w-screen h-dvh bg-black will-change-[clip-path]" />
     <div ref="dot2Ref" class="dot2 fixed z-30 w-screen h-dvh bg-white will-change-[clip-path]" />
     <div ref="preloaderTextRef" class="preloader-text fixed z-20 inset-0 flex items-center justify-center w-screen h-dvh text-[clamp(1.2rem,5vw,2.8rem)] text-white font-bold uppercase mix-blend-difference">
-      {{ $t(`preloader.text[${Math.floor(Math.random() * 6)}]`) }}
+      {{ preloaderTexts[Math.floor(Math.random() * 6)] }}
     </div>
   </div>
 </template>
@@ -16,18 +16,15 @@
   import gsap from "gsap";
 
   const emit = defineEmits(['done']);
-
-  const head = useLocaleHead();
   const route = useRoute();
   const router = useRouter()
-  const { locale } = useI18n();
   const showPreloader = ref(true);
   const preloaderRef = useTemplateRef('preloaderRef');
   const logoCirclesRef = useTemplateRef('logoCirclesRef');
   const dot1Ref = useTemplateRef('dot1Ref');
   const dot2Ref = useTemplateRef('dot2Ref');
   const preloaderTextRef = useTemplateRef('preloaderTextRef');
-  const isRootPath = computed(() => route.path === '/' || route.path === `/${locale.value}`);
+  const isRootPath = computed(() => route.path === '/');
   let ctx = gsap.context(() => { });
 
   onMounted(async () => {

@@ -1,17 +1,17 @@
 <template>
   <section ref="sectionBandRef" class="section-band">
-    <h1 class="sr-only">{{ $t('pages.band.title') }}</h1>
+    <h1 class="sr-only">Resume</h1>
     <div class="flex flex-col lg:flex-row lg:flex-wrap gap-x-4 bg-black text-white border-t-16 border-t-black">
       <div class="flex-auto">
         <ul ref="membersRef" class="members flex flex-col gap-1.5 p-6 text-[clamp(1.05rem,3vw,1.15rem)] [&_span]:block" role="list">
-          <li><span>{{ $t('pages.band.labels.vocals') }} & {{ $t('pages.band.labels.guitar') }}: Nacho Galí</span></li>
-          <li><span>{{ $t('pages.band.labels.guitar') }}: Dan Alcaide</span></li>
-          <li><span>{{ $t('pages.band.labels.guitar') }}: Fede Trillo</span></li>
-          <li><span>{{ $t('pages.band.labels.keyboards') }}: Eloy Alcaide</span></li>
-          <li><span>{{ $t('pages.band.labels.bass') }} & {{ $t('pages.band.labels.trombone') }}: Javier Gascón</span></li>
-          <li><span>{{ $t('pages.band.labels.bass') }}: Carlos Sánchez</span></li>
-          <li><span>{{ $t('pages.band.labels.drums') }}: Carlos Cruz</span></li>
-          <li><span>{{ $t('pages.band.labels.drums') }}: David Marco</span></li>
+          <li><span>Vocals & Guitar: Nacho Galí</span></li>
+          <li><span>Guitar: Dan Alcaide</span></li>
+          <li><span>Guitar: Fede Trillo</span></li>
+          <li><span>Keyboards: Eloy Alcaide</span></li>
+          <li><span>Bass & Trombone: Javier Gascón</span></li>
+          <li><span>Bass: Carlos Sánchez</span></li>
+          <li><span>Drums: Carlos Cruz</span></li>
+          <li><span>Drums: David Marco</span></li>
           <li><span>Skizonettes:<br> Sofía Royo & Nuria Pallares & Sol González</span></li>
         </ul>
       </div>
@@ -20,12 +20,12 @@
           <DynamicColumns :min="5" :max="6" />
         </div>
         <div class="relative">
-          <NuxtImg class="max-lg:h-auto h-[50dvh] w-full object-cover transition-all duration-500 ease-in-out cursor-pointer will-change-transform lg:scale-105 hover:scale-110" sizes="400px md:640px xl:1920px" :alt="image.alt" :src="`/images/band/${image.src}`" @click="handleClick" @mousemove="handleMouseMove" />
+          <img class="max-lg:h-auto h-[50dvh] w-full object-cover transition-all duration-500 ease-in-out cursor-pointer will-change-transform lg:scale-105 hover:scale-110" loading="lazy" :alt="image.alt" :src="`/images/band/${image.src}`" @click="handleClick" @mousemove="handleMouseMove">
         </div>
         <figcaption class="relative z-10 h-full text-white bg-black">{{ image.alt }}</figcaption>
       </figure>
     </div>
-    <p class="p-6 text-pretty">&copy; {{ $t('pages.band.copyrightText') }}</p>
+    <p class="p-6 text-pretty">&copy; All images are copyright to their respective owners.</p>
   </section>
 </template>
 
@@ -40,10 +40,9 @@
   gsap.registerPlugin(SplitText, ScrollTrigger);
 
   definePageMeta({
+    alias: '/resume',
     pageTransition: pageTransitionConfig,
   });
-
-  const { t } = useI18n();
   const sectionBandRef = useTemplateRef('sectionBandRef');
   const membersRef = useTemplateRef('membersRef');
   const prevImage = ref(null);
@@ -52,10 +51,10 @@
   let ctx;
 
   useSeoMeta({
-    title: `${t('pages.band.meta.title')} | ${t('siteName')}`,
-    description: t('pages.band.meta.description'),
-    ogTitle: `${t('pages.band.meta.title')} | ${t('siteName')}`,
-    ogDescription: t('pages.band.meta.description'),
+    title: 'Resume | Abin Binoy',
+    description: 'Who we are and what we look like',
+    ogTitle: 'Resume | Abin Binoy',
+    ogDescription: 'Who we are and what we look like',
   })
 
   const handleClick = (e) => {
@@ -98,7 +97,9 @@
     });
   }
 
-  onMounted(() => {
+  onMounted(async () => {
+    await nextTick();
+    await document.fonts.ready;
     isLargeDevice = window.matchMedia("(min-width: 1024px)");
 
     SplitText.create(membersRef.value, {
@@ -120,6 +121,9 @@
           duration: 1.3,
           clipPath: 'inset(0% 0% 0% 0%)',
           ease: 'power4.out',
+          onComplete: () => {
+            ScrollTrigger.refresh();
+          }
         })
         .add(figuresReveal, '>0.5')
         .add(membersReveal, '<0.4')
@@ -142,11 +146,11 @@
           once: true,
           // markers: true,
           onEnter: (figures) => {
-            const rect = figures.map((figure) => {
-              return figure.querySelectorAll('rect')
-            })
+            const rects = figures.flatMap((figure) => Array.from(figure.querySelectorAll('rect')))
 
-            gsap.to(rect, {
+            gsap.to(rects, {
+              scaleY: 0,
+              transformOrigin: 'bottom',
               '--scaleYBandColumnsReveal': '0%',
               stagger: {
                 each: 0.035,
@@ -155,12 +159,16 @@
               duration: 1,
               ease: "power4.inOut",
               onStart: () => {
-                gsap.set(rect, {
-                  '--scaleYBandColumnsReveal': "100%",
-                })
-                gsap.set('.reveal-columns', {
-                  pointerEvents: 'none'
-                })
+                figures.forEach(figure => {
+                  const revealCol = figure.querySelector('.reveal-columns');
+                  if (revealCol) revealCol.style.pointerEvents = 'none';
+                });
+              },
+              onComplete: () => {
+                figures.forEach(figure => {
+                  const revealCol = figure.querySelector('.reveal-columns');
+                  if (revealCol) revealCol.style.display = 'none';
+                });
               },
             })
           },

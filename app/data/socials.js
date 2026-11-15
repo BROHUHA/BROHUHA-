@@ -1,32 +1,27 @@
 export const socials = [
   {
-    name: 'Spotify',
-    icon: 'simple-icons:spotify',
-    url: 'https://open.spotify.com/artist/1JqAKLKes7ERRNB4DZ2BYE'
+    name: 'WhatsApp',
+    icon: 'simple-icons:whatsapp',
+    url: 'https://wa.me/918075747414'
   },
   {
-    name: 'Facebook',
-    icon: 'simple-icons:facebook',
-    url: 'https://www.facebook.com/skizophonic'
+    name: 'LinkedIn',
+    icon: 'simple-icons:linkedin',
+    url: 'https://www.linkedin.com/in/abinn-binoyy/'
   },
   {
-    name: 'Youtube',
-    icon: 'simple-icons:youtube',
-    url: 'https://www.youtube.com/user/Skizophonic2009'
+    name: 'GitHub',
+    icon: 'simple-icons:github',
+    url: 'https://github.com/BROHUHA'
   },
   {
-    name: 'Bandcamp',
-    icon: 'simple-icons:bandcamp',
-    url: 'https://skizophonic.bandcamp.com'
+    name: 'Email',
+    icon: 'simple-icons:gmail',
+    url: 'mailto:abinbinoy2000@gmail.com'
   },
   {
     name: 'Instagram',
     icon: 'simple-icons:instagram',
-    url: 'https://www.instagram.com/skizophonic_official'
-  },
-  // {
-  //   name: 'X',
-  //   icon: 'simple-icons:x',
-  //   url: 'https://x.com/skizophonic'
-  // },
+    url: 'https://www.instagram.com/abinn.binoyy/'
+  }
 ]

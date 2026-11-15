@@ -1,7 +1,7 @@
 <template>
   <div class="bandcamp-embed">
     <iframe v-if="playerId" :style="`width: ${width}; height: ${height};`" :src="`https://bandcamp.com/EmbeddedPlayer/album=${playerId}/size=large/bgcol=ffffff/linkcol=333333/artwork=none/transparent=true/`" frameborder="0" seamless />
-    <p v-if="!playerId">{{ $t('components.bandcampEmbed.noPlayer') }}</p>
+    <p v-if="!playerId">Discontinued album. Not available for download or streaming.</p>
   </div>
 </template>
 

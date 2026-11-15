@@ -12,7 +12,7 @@
       <div v-else>
         <p class="text-2xl">{{ error?.message }}</p>
       </div>
-      <NuxtLinkLocale to="/" class="w-fit">Go back home</NuxtLinkLocale>
+      <NuxtLink to="/" class="w-fit">Go back home</NuxtLink>
     </section>
   </NuxtLayout>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <section ref="merchRef" class="container relative flex gap-16 justify-end pt-[60px]">
-    <h1 class="sr-only">{{ $t('pages.merch.title') }}</h1>
+    <h1 class="sr-only">Tools</h1>
 
     <aside ref="filterRef" class="merch-filter-wrapper fixed top-16 left-4 lg:top-20 lg:left-20 md:block" aria-label="Merch filter options" role="complementary">
       <nav aria-label="Merch filter navigation">
@@ -14,19 +14,19 @@
 
     <section class="merch-list flex flex-col gap-18 md:gap-28 w-[80%]">
       <article id="tshirts">
-        <h2 class="sr-only">{{ $t('pages.merch.sections.tshirts.title') }}</h2>
+        <h2 class="sr-only">T-shirts</h2>
         <MerchItem :items="tshirts" />
       </article>
       <article id="badges">
-        <h2 class="sr-only">{{ $t('pages.merch.sections.buttonBadges.title') }}</h2>
+        <h2 class="sr-only">Button badges</h2>
         <MerchItem :items="badges" />
       </article>
       <article id="stickers">
-        <h2 class="sr-only">{{ $t('pages.merch.sections.stickers.title') }}</h2>
+        <h2 class="sr-only">Stickers</h2>
         <MerchItem :items="stickers" />
       </article>
       <article id="posters">
-        <h2 class="sr-only">{{ $t('pages.merch.sections.posters.title') }}</h2>
+        <h2 class="sr-only">Posters</h2>
         <MerchItem :items="posters" />
       </article>
     </section>
@@ -45,23 +45,22 @@
   gsap.registerPlugin(SplitText, ScrollTrigger, ScrollToPlugin);
 
   definePageMeta({
+    alias: '/tools',
     pageTransition: pageTransitionConfig,
   });
 
-  const { t } = useI18n();
-
   useSeoMeta({
-    title: `${t('pages.merch.meta.title')} | ${t('siteName')}`,
-    description: t('pages.merch.meta.description'),
-    ogTitle: `${t('pages.merch.meta.title')} | ${t('siteName')}`,
-    ogDescription: t('pages.merch.meta.description'),
+    title: 'Tools | Abin Binoy',
+    description: 'Abin Binoy tools',
+    ogTitle: 'Tools | Abin Binoy',
+    ogDescription: 'Abin Binoy tools',
   })
 
   const filterSections = [
-    { label: t('pages.merch.sections.tshirts.title'), key: 'tshirts' },
-    { label: t('pages.merch.sections.buttonBadges.title'), key: 'badges' },
-    { label: t('pages.merch.sections.stickers.title'), key: 'stickers' },
-    { label: t('pages.merch.sections.posters.title'), key: 'posters' },
+    { label: 'T-shirts', key: 'tshirts' },
+    { label: 'Button badges', key: 'badges' },
+    { label: 'Stickers', key: 'stickers' },
+    { label: 'Posters', key: 'posters' },
   ];
   const activeFilterSection = ref(null);
   const merchRef = useTemplateRef('merchRef');

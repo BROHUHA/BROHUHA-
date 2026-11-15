@@ -9,25 +9,25 @@
     <div ref="navWrapperRef" class="nav-wrapper fixed top-0 right-0 z-95 flex flex-col justify-center items-center w-full h-lvh bg-black text-white text-5xl sm:text-7xl text-center transition-all duration-500 ease-in-out" :class="isOpen ? 'open' : 'pointer-events-none'">
       <AnimationGlitch v-if="isOpen" class="absolute z-10 inset-0 h-screen" />
       <nav class="main-navigation" aria-label="Main navigation">
-        <ul class="relative z-90 flex flex-col gap-4 p-12 uppercase">
+        <ul class="relative z-90 flex flex-col gap-4 p-12 uppercase" @click="isOpen = false">
           <li>
             <AnimationTextShadow>
-              <NuxtLinkLocale to="/">{{ $t('pages.home.name') }}</NuxtLinkLocale>
+              <NuxtLink to="/">Home</NuxtLink>
             </AnimationTextShadow>
           </li>
           <li>
             <AnimationTextShadow>
-              <NuxtLinkLocale to="band">{{ $t('pages.band.name') }}</NuxtLinkLocale>
+              <NuxtLink to="/resume">Resume</NuxtLink>
             </AnimationTextShadow>
           </li>
           <li>
             <AnimationTextShadow>
-              <NuxtLinkLocale to="music">{{ $t('pages.music.name') }}</NuxtLinkLocale>
+              <NuxtLink to="/works">Works</NuxtLink>
             </AnimationTextShadow>
           </li>
           <li>
             <AnimationTextShadow>
-              <NuxtLinkLocale to="merch">{{ $t('pages.merch.name') }}</NuxtLinkLocale>
+              <NuxtLink to="/tools">Tools</NuxtLink>
             </AnimationTextShadow>
           </li>
         </ul>
@@ -35,8 +35,7 @@
       <nav class="social-navigation" aria-label="Social navigation">
         <SocialLinks class="text-3xl sm:text-5xl" />
       </nav>
-      <NavLang />
-    </div>
+</div>
   </div>
 </template>
 
@@ -47,7 +46,7 @@
   const navWrapperRef = useTemplateRef('navWrapperRef')
   const route = useRoute()
 
-  watch(route, () => {
+  watch(() => route.fullPath, () => {
     isOpen.value = false
   })
 

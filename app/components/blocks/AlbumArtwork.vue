@@ -7,7 +7,7 @@
   <AnimationReveal @done="isAnimationRevealDone = true">
     <section class="artwork relative h-fit">
       <div ref="caseRef" class="case relative z-10 w-[80%] perspective-[1000px]" :class="{ 'cursor-pointer': !expandedArtwork }">
-        <div ref="caseInnerRef" class="relative w-full h-full transform-3d" :data-cursor-text="$t('components.cursor.flip')" @click="handleClickCase">
+        <div ref="caseInnerRef" class="relative w-full h-full transform-3d" :data-cursor-text="'Flip'" @click="handleClickCase">
           <div ref="coverRef" class="cover relative w-full top-0 left-0 backface-hidden overflow-hidden will-change-transform [box-shadow:_5px_3px_10px_-3px_rgba(0,_0,_0,_.7)]" aria-label="Album cover">
             <img class="object-cover" :src="`/albums/${content.slug}/${content.images.cover}`" :alt="`${content.title} - cover`">
           </div>
@@ -17,12 +17,12 @@
         </div>
       </div>
       <div ref="discRef" class="disc z-5 absolute top-1/2 -translate-y-1/2 right-0 w-[65%] drop-shadow-md/50 will-change-transform" aria-label="Album disc">
-        <img ref="galletaRef" class="galleta [clip-path:_circle(50%_at_50%_50%)]" :class="{ 'cursor-pointer': !expandedArtwork }" :src="`/albums/${content.slug}/${content.images.galleta}`" :alt="`${content.title} - disc`" :data-cursor-text="$t('components.cursor.zoom')" @click="handleClickGalleta">
+        <img ref="galletaRef" class="galleta [clip-path:_circle(50%_at_50%_50%)]" :class="{ 'cursor-pointer': !expandedArtwork }" :src="`/albums/${content.slug}/${content.images.galleta}`" :alt="`${content.title} - disc`" :data-cursor-text="'Zoom'" @click="handleClickGalleta">
       </div>
     </section>
   </AnimationReveal>
   <AnimationReveal class="hidden touch:block hybrid-device:block">
-    <div ref="moreInfoRef" class="more-info w-full left-0 bottom-0 text-xs pt-2">[{{ t('components.albumArtwork.moreInfo') }}]</div>
+    <div ref="moreInfoRef" class="more-info w-full left-0 bottom-0 text-xs pt-2">[Tap the artwork or “+”]</div>
   </AnimationReveal>
 </template>
 
@@ -35,8 +35,6 @@
       required: true
     },
   })
-
-  const { t } = useI18n()
   const caseRef = useTemplateRef('caseRef')
   const back = useTemplateRef('backRef')
   const disc = useTemplateRef('discRef')
@@ -48,7 +46,7 @@
   const zoomedGalleta = ref(false);
   const buttonDisabled = ref(false);
   const isAnimationRevealDone = ref(false)
-  const buttonExpand = ref({ preffix: '+', text: t('pages.music.labels.expandArtwork'), eventMethod: () => handleExpandArtwork() })
+  const buttonExpand = ref({ preffix: '+', text: 'Expand artwork', eventMethod: () => handleExpandArtwork() })
 
   onMounted(() => {
     gsap.set(galleta.value, {
@@ -71,10 +69,10 @@
 
     watchEffect(() => {
       if (expandedArtwork.value) {
-        buttonExpand.value = { preffix: '-', text: t('pages.music.labels.collapseArtwork'), eventMethod: () => handleCollapseArtwork() }
+        buttonExpand.value = { preffix: '-', text: 'Collapse artwork', eventMethod: () => handleCollapseArtwork() }
       }
       else {
-        buttonExpand.value = { preffix: '+', text: t('pages.music.labels.expandArtwork'), eventMethod: () => handleExpandArtwork() }
+        buttonExpand.value = { preffix: '+', text: 'Expand artwork', eventMethod: () => handleExpandArtwork() }
       }
     })
   })

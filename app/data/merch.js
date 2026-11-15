@@ -1,7 +1,7 @@
 export const tshirts = [
   {
     id: 1,
-    name: 'Skizophonic',
+    name: 'Abin Binoy',
     image: 'tshirt_skizophonic.png',
     stock: 0,
   },
@@ -41,7 +41,7 @@ export const tshirts = [
 export const badges = [
   {
     id: 1,
-    name: 'Skizophonic',
+    name: 'Abin Binoy',
     image: 'badge_skizophonic.png',
   }
 ]

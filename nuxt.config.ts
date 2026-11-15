@@ -19,7 +19,6 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/scripts',
     'lenis/nuxt',
-    '@nuxtjs/i18n',
     '@nuxtjs/sitemap',
   ],
   components: [
@@ -35,72 +34,21 @@ export default defineNuxtConfig({
       anchorLinks: { h2: false, h3: false, h4: false }
     }
   },
-  i18n: {
-    baseUrl: process.env.APP_URL,
-    strategy: 'prefix_except_default',
-    defaultLocale: 'en',
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'i18n_redirected',
-      redirectOn: 'root',
-    },
-    locales: [
-      {
-        code: 'en',
-        name: 'English',
-        language: 'en-GB',
-        file: 'en.json'
-      },
-      {
-        code: 'es',
-        name: 'Spanish',
-        language: 'es-ES',
-        file: 'es.json'
-      }
-    ],
-    customRoutes: 'config', // disable custom route with page components
-    pages: {
-      home: {
-        en: '/home',
-        es: '/home'
-      },
-      band: {
-        en: '/band',
-        es: '/banda'
-      },
-      merch: {
-        en: '/merch',
-        es: '/merch'
-      },
-      music: {
-        en: '/music',
-        es: '/musica'
-      },
-      'music-slug': {
-        en: '/music/[slug]',
-        es: '/musica/[slug]'
-      },
-      privacy: {
-        en: '/privacy',
-        es: '/privacidad'
-      },
-    },
-  },
   app: {
     head: {
-      title: 'Skizophonic',
+      title: 'Abin Binoy',
       meta: [
         {
           name: 'description',
-          content: 'Music band based in Benicasim and Castellón, Spain',
+          content: 'Abin Binoy Portfolio',
         },
         {
           name: 'og:title',
-          content: 'Skizophonic',
+          content: 'Abin Binoy',
         },
         {
           name: 'og:description',
-          content: 'Music band based in Benicasim and Castellón, Spain',
+          content: 'Abin Binoy Portfolio',
         },
         {
           name: 'og:image',
@@ -108,7 +56,7 @@ export default defineNuxtConfig({
         },
         {
           name: 'og:image:alt',
-          content: 'Skizophonic logo',
+          content: 'Abin Binoy logo',
         },
         {
           name: 'og:image:width',
@@ -127,10 +75,10 @@ export default defineNuxtConfig({
           content: 'website',
         },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'author', content: 'Dan Alcaide' },
+        { name: 'author', content: 'Abin Binoy' },
         { name: 'generator', content: 'Coffe and chocolate' },
         { name: 'format-detection', content: 'telephone=no' },
-        { name: 'apple-mobile-web-app-title', content: 'Skizophonic' },
+        { name: 'apple-mobile-web-app-title', content: 'Abin Binoy' },
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', media: '(prefers-color-scheme: light)', href: '/favicons/favicon-light-mode.svg' },

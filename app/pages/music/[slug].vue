@@ -8,7 +8,7 @@
       <section>
         <header>
           <AnimationReveal>
-            <NuxtLinkLocale to="music" class="inline-block lowercase">{{ $t('pages.music.labels.back') }}</NuxtLinkLocale>
+            <NuxtLink to="/works" class="inline-block lowercase">Back to works</NuxtLink>
           </AnimationReveal>
           <AnimationReveal>
             <h1>{{ content.title }}</h1>
@@ -31,7 +31,7 @@
               <div class="flex flex-col sm:flex-row gap-4">
                 <span v-for="social in content.social" :key="social.label" class="flex items-center gap-2">
                   <Icon :name="social.icon" />
-                  <a :href="social.link" class="">{{ $t('pages.music.labels.socialLinks') }} {{ social.label }}</a>
+                  <a :href="social.link" class="">Listen on {{ social.label }}</a>
                 </span>
               </div>
             </AnimationReveal>
@@ -45,7 +45,7 @@
             </AnimationReveal>
           </article>
           <article id="info">
-            <div v-if="content.recordLabel">{{ $t('pages.music.labels.recordLabel') }}: {{ content.recordLabel }}</div>
+            <div v-if="content.recordLabel">Record label: {{ content.recordLabel }}</div>
             <ContentRenderer v-if="post" :value="post" />
           </article>
           <article id="tracklist">
@@ -66,14 +66,14 @@
   import gsap from "gsap";
 
   definePageMeta({
+    alias: '/works/:slug',
     pageTransition: pageTransitionFadeConfig,
   });
 
   const config = useRuntimeConfig()
-  const { locale } = useI18n()
   const slug = useRoute().params.slug
   const { data: post } = await useAsyncData(slug, () => {
-    return queryCollection('music').path(`/${locale.value}/music/${slug}`).first()
+    return queryCollection('music').path(`/en/music/${slug}`).first()
   })
 
   const content = albums.find(album => album.slug === slug)
@@ -81,9 +81,9 @@
   const currentActiveSectionId = ref('#music')
 
   useSeoMeta({
-    title: `${content.title} | Skizophonic`,
+    title: `${content.title} | Abin Binoy`,
     description: content.meta.description,
-    ogTitle: `${content.title} | Skizophonic`,
+    ogTitle: `${content.title} | Abin Binoy`,
     ogDescription: content.meta.description,
     ogType: 'music.album',
     ogImage: `${config.public.appUrl}/albums/${slug}/${content.images.cover}`,
