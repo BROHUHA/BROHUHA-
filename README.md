@@ -1,96 +1,88 @@
-# Skizophonic website
+# Abin Binoy — Portfolio
 
-Music band based in Benicasim and Castellón, Spain.
-_Banda de música formada entre Benicàssim y Castellón, España._
+Personal creative portfolio and digital showcase for **Abin Binoy**, Full-Stack Developer.
 
-[www.skizophonic.com](https://www.skizophonic.com)
+**Live Deployment:** [abinbinoy.vercel.app](https://abinbinoy.vercel.app)
 
-Made with Nuxt, Tailwind, GSAP, CSS/SVG animations, chocolate and coffee.
-_Hecho con Nuxt, Tailwind, GSAP, animaciones CSS/SVG, chorizo y paella._
+---
 
-This website has received an **Honorable Mention** on [Awwwards](https://www.awwwards.com/sites/skizophonic).
+## About
 
-## License
+I am **Abin Binoy**, a BCA graduate and dedicated Full-Stack Developer with over two years of experience. I focus on developing robust, innovative web applications and digital experiences that combine performance, usability, and modern aesthetics.
 
-- **Code:** Licensed under the [MIT License](./LICENSE). See `LICENSE` file.
-  You’re free to use, modify, and distribute the source code.
+---
 
-- **Design, content, and branding:** Licensed under the [Creative Commons
-  Attribution–NonCommercial–NoDerivatives 4.0 International License (CC BY-NC-ND 4.0)](./LICENSE-DESIGN). See `LICENSE-DESIGN` file.
-  These materials may not be used commercially or modified without permission.
+## Technical Stack
 
-## Overview
+- **Core Framework:** [Nuxt 3](https://nuxt.com/) (Vue 3, Vite, SSR/SPA architecture)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animation Engine:** [GSAP](https://gsap.com/) (ScrollTrigger, SplitText, Observer)
+- **Smooth Scrolling:** [Lenis](https://github.com/darkroomengineering/lenis)
+- **Media & Typography:** `@nuxt/icon`, `@nuxt/fonts`, custom SVG graphics, and optimized video assets
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+---
 
-## Setup
+## Architecture and Key Sections
 
-Make sure to install dependencies:
+- **Home (`/`)**: Interactive hypnotic hero layout, video masks, dynamic canvas and SVG animations, with synchronized narrative timeline blocks.
+- **Resume (`/resume`)**: Professional profile, technical capabilities, and an interactive media gallery with SVG column reveal transitions.
+- **Works (`/works`)**: Fullscreen showcase with dynamic GSAP Observer scroll mechanics, project case studies, and route transitions.
+- **Tools (`/tools`)**: Interactive showcase with animated category filtering.
+
+---
+
+## Contact and Links
+
+- **Website:** [https://abinbinoy.vercel.app](https://abinbinoy.vercel.app)
+- **LinkedIn:** [linkedin.com/in/abinn-binoyy](https://www.linkedin.com/in/abinn-binoyy/)
+- **GitHub:** [github.com/BROHUHA](https://github.com/BROHUHA)
+- **Email:** [abinbinoy2000@gmail.com](mailto:abinbinoy2000@gmail.com)
+- **WhatsApp:** [+91 8075747414](https://wa.me/918075747414)
+- **Instagram:** [@abinn.binoyy](https://www.instagram.com/abinn.binoyy/)
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (version 18.0.0 or higher; version 20+ recommended)
+- Package manager: npm, pnpm, yarn, or bun
+
+### Installation
+
+Clone the repository and install the dependencies:
 
 ```bash
-# npm
+git clone https://github.com/BROHUHA/BROHUHA-.git
+cd BROHUHA-
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+### Development
 
-Start the development server on `http://localhost:3000`:
+To start the local development server at `http://localhost:3000`:
 
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+### Production
 
 Build the application for production:
 
 ```bash
-# npm
 npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
+Preview the production build locally:
 
 ```bash
-# npm
 npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+---
+
+## License
+
+This project is licensed under the [MIT License](./LICENSE).
