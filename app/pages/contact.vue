@@ -444,25 +444,34 @@
     isSubmitting.value = true;
     errorMessage.value = '';
 
+    const accessKey = config.public?.web3formsAccessKey || '358a7427-79e7-4aaa-80ab-98be68b368f1';
+
     try {
-      const res = await $fetch('/api/contact', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        body: {
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
           name: form.name,
           email: form.email,
-          subject: form.subject || 'New project opportunity / Full-stack inquiry',
+          subject: form.subject ? `[4bin Portfolio] ${form.subject}` : 'New Open Collaboration Inquiry from 4bin.vercel.app',
           message: form.message,
-        },
+          from_name: `${form.name} via 4bin Portfolio`,
+        }),
       });
 
-      if (res && res.success) {
+      const data = await response.json();
+
+      if (data && data.success) {
         submitSuccess.value = true;
       } else {
-        throw new Error(res?.message || 'Failed to dispatch message.');
+        throw new Error(data?.message || 'Failed to dispatch message.');
       }
     } catch (err) {
       errorMessage.value =
-        err?.data?.statusMessage ||
         err?.message ||
         'Could not dispatch message. You can use "Open in Mail Client" directly.';
     } finally {
@@ -492,5 +501,17 @@
     transform: scaleY(var(--scaleYContactColumnsReveal));
     transform-origin: bottom;
     will-change: auto;
+  }
+
+  /* Prevent browser autofill from turning inputs white */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus {
+    -webkit-text-fill-color: #ffffff !important;
+    -webkit-box-shadow: 0 0 0px 1000px #1a1a1a inset !important;
+    transition: background-color 5000s ease-in-out 0s;
   }
 </style>
