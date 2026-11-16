@@ -6,9 +6,12 @@
     <audio
       ref="audioRef"
       src="/audio/the_wolf.mp3"
+      autoplay
       loop
       preload="auto"
       playsinline
+      @play="isMuted = false"
+      @pause="isMuted = true"
     />
 
     <!-- Minimal Floating Audio Control (Icon Only + Wave Click Animation) -->
@@ -162,26 +165,29 @@
     if (!audioRef.value) return;
     audioRef.value.currentTime = 0;
     audioRef.value.muted = false;
+    isMuted.value = false;
+
     const playPromise = audioRef.value.play();
     if (playPromise !== undefined) {
       playPromise.then(() => {
         isMuted.value = false;
       }).catch(() => {
-        // Autoplay blocked on mobile - unlock on first user gesture anywhere
-        isMuted.value = true;
-        const unlockAudio = () => {
+        // Autoplay policy prevented immediate playback without user interaction (e.g. mobile)
+        // Keep isMuted = false in intent, and automatically start on very first user gesture anywhere
+        const unlock = () => {
           if (audioRef.value) {
+            audioRef.value.currentTime = 0;
             audioRef.value.muted = false;
             audioRef.value.play().then(() => {
               isMuted.value = false;
             }).catch(() => {});
           }
-          ['click', 'touchstart', 'touchend', 'scroll', 'keydown'].forEach(evt => {
-            window.removeEventListener(evt, unlockAudio);
+          ['pointerdown', 'touchstart', 'touchend', 'click', 'scroll', 'wheel', 'keydown'].forEach(evt => {
+            window.removeEventListener(evt, unlock);
           });
         };
-        ['click', 'touchstart', 'touchend', 'scroll', 'keydown'].forEach(evt => {
-          window.addEventListener(evt, unlockAudio, { passive: true, once: true });
+        ['pointerdown', 'touchstart', 'touchend', 'click', 'scroll', 'wheel', 'keydown'].forEach(evt => {
+          window.addEventListener(evt, unlock, { passive: true, once: true });
         });
       });
     }
@@ -192,16 +198,16 @@
     if (!audioRef.value) return;
 
     if (isMuted.value || audioRef.value.paused) {
+      // Unmute and always play from the beginning
+      audioRef.value.currentTime = 0;
       audioRef.value.muted = false;
-      if (audioRef.value.paused) {
-        audioRef.value.play().then(() => {
-          isMuted.value = false;
-        }).catch(() => {});
-      } else {
+      audioRef.value.play().then(() => {
         isMuted.value = false;
-      }
+      }).catch(() => {});
     } else {
+      // Mute / pause
       audioRef.value.muted = true;
+      audioRef.value.pause();
       isMuted.value = true;
     }
   };
@@ -222,6 +228,7 @@
   })
 
   onMounted(async () => {
+    startMusic();
     await document.fonts.ready;
 
     const isPortrait = window.matchMedia("(orientation: portrait)").matches;
