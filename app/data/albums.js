@@ -388,8 +388,8 @@ export const albums = [
       ],
     },
     bgVideo: {
-      fhd: 'subway_1080p.mp4',
-      hd: 'subway_720p.mp4',
+      fhd: 'portfolio_1080p.mp4',
+      hd: 'portfolio_720p.mp4',
     },
     tracklist: [
       'Exhibitionist',

@@ -52,8 +52,8 @@
       <h2 class="sr-only">Who is Abin Binoy?</h2>
 
       <section ref="block1Ref" class="block1 absolute z-10 inset-0 flex flex-col items-center justify-center w-screen h-lvh">
-        <div v-for="(video, index) in videos" :key="video.small" class="circles absolute top-0 left-0 w-full h-full" :class="`circle${index}`">
-          <video class="w-full h-full object-cover rotate-180 brightness-70 will-change-[clip-path]" aria-hidden="true" preload="auto" autoplay muted loop playsinline disableremoteplayback>
+        <div v-for="(video, index) in videos" :key="index" class="circles absolute top-0 left-0 w-full h-full" :class="`circle${index}`">
+          <video class="w-full h-full object-cover brightness-75 will-change-[clip-path]" aria-hidden="true" preload="auto" autoplay muted loop playsinline webkit-playsinline disableremoteplayback>
             <source :src="`/videos/${video.large}`" type="video/mp4" media="(min-width: 1280px)">
             <source :src="`/videos/${video.small}`" type="video/mp4">
           </video>
@@ -121,24 +121,24 @@
 
   const videos = {
     0: {
-      'small': 'woman_dancing_480p.mp4',
-      'large': 'woman_dancing_720p.mp4',
+      'small': 'portfolio_720p.mp4',
+      'large': 'portfolio_1080p.mp4',
     },
     1: {
-      'small': 'vhs_480p.mp4',
-      'large': 'vhs_720p.mp4',
+      'small': 'apkcook_720p.mp4',
+      'large': 'apkcook_1080p.mp4',
     },
     2: {
-      'small': 'subway_480p.mp4',
-      'large': 'subway_720p.mp4',
+      'small': 'allqr_720p.mp4',
+      'large': 'allqr_1080p.mp4',
     },
     3: {
-      'small': 'woman_finger_640p.mp4',
-      'large': 'woman_finger_720p.mp4',
+      'small': 'apkcook_720p.mp4',
+      'large': 'apkcook_1080p.mp4',
     },
     4: {
-      'small': 'factories_480p.mp4',
-      'large': 'factories_720p.mp4',
+      'small': 'portfolio_720p.mp4',
+      'large': 'portfolio_1080p.mp4',
     },
   }
   const isPageLoaded = ref(false);
@@ -247,6 +247,15 @@
   onMounted(async () => {
     startMusic();
     await document.fonts.ready;
+
+    if (block1Ref.value) {
+      const circleVideos = block1Ref.value.querySelectorAll('video');
+      circleVideos.forEach(v => {
+        v.muted = true;
+        v.defaultMuted = true;
+        v.play().catch(() => {});
+      });
+    }
 
     const isPortrait = window.matchMedia("(orientation: portrait)").matches;
 

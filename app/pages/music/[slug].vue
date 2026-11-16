@@ -119,6 +119,7 @@
     middleware: [
       (to) => {
         const slugAliases = {
+          'video-rock': 'btscanner',
           velodrome: 'apkcook',
           gossip: 'allqr',
           'living-room': 'portfolio',
@@ -133,6 +134,7 @@
   const config = useRuntimeConfig()
   const routeSlug = useRoute().params.slug
   const slugAliases = {
+    'video-rock': 'btscanner',
     velodrome: 'apkcook',
     gossip: 'allqr',
     'living-room': 'portfolio',
