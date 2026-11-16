@@ -1,11 +1,13 @@
 <template>
-  <section ref="privacyPageRef" class="privacy-page container place-content-center min-h-dvh prose-lg prose-h1:text-[clamp(3rem,_10vw,_4.6rem)] prose-h1:mb-0 md:text-balance">
-    <h1>Privacy policy & cookies</h1>
-    <p>We care about your (and our) privacy. That’s why we don’t use cookies on this website, and we’re not planning to. We’re not interested in tracking visitors or collecting data about you, that’s just not what we do.</p>
-    <p>Our only goal is to share our music with you. Nothing more, nothing less.</p>
-    <p>That said, our website is hosted by a third-party provider, and they might use their own cookies for things like security or basic site performance. That part is outside of our control, but from our side, we keep things as cookie-free as possible.</p>
-    <p>We don't sell food either, but our advice is to eat more vegetables to stay healthy. We also encourage you to support Spanish products; our Ibérico ham and olive oil are among the wonders of the world.</p>
-    <p>Today, save your weekend. Tomorrow, save your soul.</p>
+  <section ref="privacyPageRef" class="privacy-page container place-content-center min-h-dvh prose-lg prose-h1:text-[clamp(2.5rem,_8vw,_4.2rem)] prose-h1:mb-6 md:text-balance py-20 sm:py-28">
+    <h1>PRIVACY POLICY & COOKIES</h1>
+    <p>I care about your privacy. Mostly because I’d also like mine to remain intact. So, I don’t use this portfolio to secretly collect your personal information, stalk your browsing habits, or figure out why you opened this website at 2 AM.</p>
+    <p>I’m here to show you my work, projects, and a little bit of what goes on inside my developer brain. That’s pretty much it. No secret agenda. No evil data empire.</p>
+    <p>I don’t intentionally use cookies to track you around the internet. If something from the hosting provider or another third-party service decides to bring its own cookies to the party, that’s their thing, not mine. I’ll keep my side of the website as simple and privacy-friendly as possible.</p>
+    <p>I don’t sell your data, trade your information, or build a suspicious little spreadsheet about you. I have enough spreadsheets and bugs to deal with already.</p>
+    <p>If you send me something through this website, I’ll only use it for the reason you sent it. I won’t suddenly decide that your email belongs in a marketing campaign you never asked for. That would be weird. And slightly annoying.</p>
+    <p>So, explore the portfolio, judge my code, admire the animations, and pretend you didn’t notice that one tiny alignment issue.</p>
+    <p class="font-bold text-white pt-2"><strong>Your privacy stays yours. My bugs stay mine. Fair deal.</strong></p>
   </section>
 </template>
 

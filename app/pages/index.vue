@@ -121,8 +121,8 @@
 
   const videos = {
     0: {
-      'small': 'portfolio_720p.mp4',
-      'large': 'portfolio_1080p.mp4',
+      'small': 'wave_720p.mp4',
+      'large': 'wave_1080p.mp4',
     },
     1: {
       'small': 'apkcook_720p.mp4',
@@ -133,12 +133,12 @@
       'large': 'allqr_1080p.mp4',
     },
     3: {
-      'small': 'apkcook_720p.mp4',
-      'large': 'apkcook_1080p.mp4',
-    },
-    4: {
       'small': 'portfolio_720p.mp4',
       'large': 'portfolio_1080p.mp4',
+    },
+    4: {
+      'small': 'wave_720p.mp4',
+      'large': 'wave_1080p.mp4',
     },
   }
   const isPageLoaded = ref(false);
