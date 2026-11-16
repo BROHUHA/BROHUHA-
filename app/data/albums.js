@@ -276,6 +276,7 @@ export const albums = [
       cover: 'cover.png',
       back: 'back.png',
       galleta: 'galleta.png',
+      bg: 'bg.png',
     },
     year: 2025,
     releaseDate: '2025-01-01',
@@ -296,10 +297,7 @@ export const albums = [
     videos: {
       youtube: [],
     },
-    bgVideo: {
-      fhd: 'portfolio_1080p.mp4',
-      hd: 'portfolio_720p.mp4',
-    },
+    bgVideo: null,
     tracklist: [
       {
         name: 'Vue 3 & Composition API',
@@ -353,54 +351,59 @@ export const albums = [
   },
   {
     id: 5,
-    slug: 'one',
-    title: 'One',
+    slug: 'about',
+    title: 'ABOUT',
     images: {
-      cover: 'cover.jpg',
-      back: 'back.jpg',
+      cover: 'cover.png',
+      back: 'back.png',
       galleta: 'galleta.png',
+      bg: 'bg.png',
     },
-    year: 2008,
-    releaseDate: '2008-05-01',
-    recordLabel: '',
+    year: 2025,
+    releaseDate: '2025-01-01',
+    category: 'Interactive Profile & Developer Platform',
     meta: {
-      description: 'One is the first album recorded by Abin Binoy.',
+      description: 'The official interactive About platform of Abin Binoy, showcasing developer background, story, and engineering principles.',
     },
-    player: {
-      spotify: '',
-      bandcamp: {
-        id: '',
-        width: '',
-        height: ''
-      }
-    },
-    social: [],
+    basicInfo: 'An interactive, personal digital space built with modern web architecture to provide a deep dive into Abin Binoy\'s developer story, technical journey, engineering philosophies, and creative experiments.',
+    howToUse: null,
+    player: null,
+    social: [
+      {
+        label: 'Visit Site',
+        link: 'https://abinbinoy.vercel.app',
+        icon: 'lucide:globe',
+      },
+    ],
     videos: {
-      youtube: [
-        {
-          id: 'srcpryXQHXo',
-          title: 'Sweating Blood',
-        },
-        // {
-        //   id: 'YmKeR4UfhOA',
-        //   title: 'Smiles & Clouds',
-        // },
-      ],
+      youtube: [],
     },
-    bgVideo: {
-      fhd: 'portfolio_1080p.mp4',
-      hd: 'portfolio_720p.mp4',
-    },
+    bgVideo: null,
     tracklist: [
-      'Exhibitionist',
-      'The Last Stupid Rock Project',
-      'Smiles & Clouds',
-      'The Wrong Way',
-      '1968',
-      'Disco Stinks',
-      'Lucky Boy',
-      'The Other Side Of Border Line',
-      'Sweating Blood',
+      {
+        name: 'Vue 3 & Composition API',
+        reason: 'Reactive frontend architecture utilizing script setup and reusable component logic for seamless view rendering.',
+      },
+      {
+        name: 'Tailwind CSS Modern Styling',
+        reason: 'Utility-first styling system enabling responsive typography, sleek dark aesthetic, and fluid layout scaling.',
+      },
+      {
+        name: 'Vite Next-Gen Bundler',
+        reason: 'Ultra-fast build tooling and lightning-quick Hot Module Replacement (HMR) for continuous developer iteration.',
+      },
+      {
+        name: 'Responsive 3D Card Physics',
+        reason: 'Custom CSS perspective and 3D transforms simulating real-world jewel cases and interactive disc extraction.',
+      },
+      {
+        name: 'TypeScript & JavaScript (ESNext)',
+        reason: 'Modern ECMAScript standard delivering strict type safety, asynchronous event handling, and clean code architecture.',
+      },
+      {
+        name: 'Vercel Edge Network',
+        reason: 'Serverless cloud infrastructure delivering low-latency asset caching and instant global performance.',
+      },
     ],
   },
 ];

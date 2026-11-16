@@ -1,3 +1,4 @@
-
 User-agent: *
-Disallow:
+Allow: /
+
+Sitemap: https://4bin.vercel.app/sitemap.xml

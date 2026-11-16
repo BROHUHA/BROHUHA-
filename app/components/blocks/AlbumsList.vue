@@ -14,18 +14,30 @@
     <div v-for="album in albums" :key="album.slug" class="slide album invisible fixed w-screen h-screen top-0 will-change-transform [&_a]:before:h-0">
       <div class="outer-wrapper w-full h-full overflow-y-hidden will-change-transform">
         <div class="inner-wrapper w-full h-full overflow-y-hidden will-change-transform">
-          <div :class="`bg absolute top-0 left-0 grid grid-cols-1 sm:grid-cols-2 place-items-center content-center gap-4 w-full h-full bg-cover bg-center`" :style="`background-image: linear-gradient(0deg, rgb(0 0 0 / 100%) 0%, rgb(0 0 0 / 50%) 100%), url(/albums/${album.slug}/${album.images.cover});`">
-            <div class="absolute -z-10 top-0 left-0 w-full h-full" :data-cursor-text="'Scroll'">
+          <div :class="`bg absolute top-0 left-0 grid grid-cols-1 sm:grid-cols-2 place-items-center content-center gap-4 w-full h-full bg-cover bg-center`" :style="`background-image: linear-gradient(0deg, rgb(0 0 0 / 100%) 0%, rgb(0 0 0 / 50%) 100%), url(/albums/${album.slug}/${album.images.bg || album.images.cover});`">
+            <div v-if="album.bgVideo" class="absolute -z-10 top-0 left-0 w-full h-full" :data-cursor-text="'Scroll'">
               <video class="w-full h-full object-cover" preload="auto" autoplay :muted="true" muted loop playsinline webkit-playsinline disableremoteplayback>
                 <source :src="`/videos/${album.bgVideo.fhd}`" type="video/mp4" media="(min-width: 1920px)">
                 <source :src="`/videos/${album.bgVideo.hd}`" type="video/mp4">
               </video>
             </div>
+            <div v-else-if="album.images?.bg" class="absolute -z-10 top-0 left-0 w-full h-full" :data-cursor-text="'Scroll'">
+              <img :src="`/albums/${album.slug}/${album.images.bg}`" :alt="album.title" class="w-full h-full object-cover brightness-60 select-none pointer-events-none" />
+            </div>
             <div class="w-2/3 relative">
-              <NuxtLink :to="`/works/${album.slug}`">
-                <img :src="`/albums/${album.slug}/${album.images.cover}`" :alt="album.title" width="1000" height="900">
+              <NuxtLink
+                :to="`/works/${album.slug}`"
+                class="block relative transition-transform duration-300 ease-out hover:-translate-y-1 will-change-transform"
+              >
+                <img
+                  :src="`/albums/${album.slug}/${album.images.cover}`"
+                  :alt="album.title"
+                  width="1000"
+                  height="900"
+                  class="w-full h-auto object-cover"
+                >
+                <span class="album-year absolute bottom-0 right-0 inline-block text-lg lg:text-xl xl:text-2xl p-2 lg:p-3 font-bold text-white mix-blend-difference">{{ album.year }}</span>
               </NuxtLink>
-              <span class="album-year absolute bottom-0 right-0 inline-block text-lg lg:text-xl xl:text-2xl p-2 lg:p-3 font-bold text-white mix-blend-difference">{{ album.year }}</span>
             </div>
             <div class="1/3">
               <h2 class="slide-heading text-8xl">

@@ -119,6 +119,7 @@
     middleware: [
       (to) => {
         const slugAliases = {
+          one: 'about',
           'video-rock': 'btscanner',
           velodrome: 'apkcook',
           gossip: 'allqr',
@@ -134,6 +135,7 @@
   const config = useRuntimeConfig()
   const routeSlug = useRoute().params.slug
   const slugAliases = {
+    one: 'about',
     'video-rock': 'btscanner',
     velodrome: 'apkcook',
     gossip: 'allqr',
@@ -150,15 +152,19 @@
   const activeToolIndex = ref(null)
 
   useSeoMeta({
-    title: `${content.title} | Abin Binoy`,
+    title: `${content.title} | 4bin - Abin Binoy (BROHUHA)`,
     description: content.meta.description,
-    ogTitle: `${content.title} | Abin Binoy`,
+    keywords: `${content.title}, 4bin, 4bin binoy, abin binoy, brohuha, ${content.category}`,
+    ogTitle: `${content.title} | 4bin - Abin Binoy (BROHUHA)`,
     ogDescription: content.meta.description,
-    ogType: 'music.album',
+    ogType: 'website',
+    ogUrl: `https://4bin.vercel.app/works/${slug}`,
     ogImage: `${config.public.appUrl}/albums/${slug}/${content.images.cover}`,
     ogImageAlt: `${content.title} - cover`,
     ogImageWidth: 1000,
     ogImageHeight: 900,
+    twitterCard: 'summary_large_image',
+    twitterImage: `${config.public.appUrl}/albums/${slug}/${content.images.cover}`,
   })
 
   onMounted(() => {

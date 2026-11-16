@@ -25,7 +25,8 @@
   })
 
   const playAllAutoplayVideos = () => {
-    const videos = document.querySelectorAll("video");
+    // Avoid playing hidden background videos on the homepage that are managed by ScrollTrigger lifecycle
+    const videos = document.querySelectorAll("video:not(.circles video):not(.showreel)");
     videos.forEach((video) => {
       if (video.hasAttribute("autoplay") || video.autoplay) {
         video.muted = true;

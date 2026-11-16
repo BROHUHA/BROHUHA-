@@ -1,16 +1,16 @@
 <template>
-  <div ref="heroHypnoticRef" class="hero-hypnotic relative z-40 w-screen h-lvh overflow-hidden">
-    <div class="bg-wrapper absolute top-0 left-0 w-full h-full">
-      <video ref="videoRef" class="w-full h-full object-cover" preload="auto" autoplay muted loop playsinline disableremoteplayback>
+  <div ref="heroHypnoticRef" class="hero-hypnotic relative z-40 w-screen h-lvh overflow-hidden transform-gpu">
+    <div class="bg-wrapper absolute top-0 left-0 w-full h-full will-change-[clip-path]">
+      <video ref="videoRef" class="w-full h-full object-cover transform-gpu" preload="auto" autoplay muted loop playsinline webkit-playsinline disableremoteplayback>
         <source src="/videos/spiral_large.mp4" type="video/mp4" media="(min-width: 2560px)">
         <source src="/videos/spiral_medium.mp4" type="video/mp4" media="(min-width: 1920px)">
         <source src="/videos/spiral_small.mp4" type="video/mp4">
       </video>
     </div>
-    <div ref="slotRef" class="relative z-10 flex justify-center items-center w-full h-full overflow-hidden text-9xl bg-black text-white mix-blend-difference">
+    <div ref="slotRef" class="relative z-10 flex justify-center items-center w-full h-full overflow-hidden text-9xl bg-black text-white mix-blend-difference transform-gpu">
       <slot />
     </div>
-    <div ref="scrollDownRef" class="scroll-down fixed inset-0 w-full h-svh place-content-end text-4xl sm:text-5xl text-center text-white mix-blend-difference pointer-events-none">
+    <div ref="scrollDownRef" class="scroll-down fixed inset-0 w-full h-svh place-content-end text-4xl sm:text-5xl text-center text-white mix-blend-difference pointer-events-none transform-gpu">
       <Icon class="animate-bounce" name="ion:arrow-down-a" />
     </div>
   </div>
@@ -106,5 +106,18 @@
 
   onUnmounted(() => {
     ctx.revert();
+  });
+
+  defineExpose({
+    playVideo: () => {
+      if (videoRef.value && videoRef.value.paused) {
+        videoRef.value.play().catch(() => {});
+      }
+    },
+    pauseVideo: () => {
+      if (videoRef.value && !videoRef.value.paused) {
+        videoRef.value.pause();
+      }
+    }
   });
 </script>

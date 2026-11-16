@@ -29,6 +29,10 @@ export default defineNuxtConfig({
       global: true
     }
   ],
+  site: {
+    url: 'https://4bin.vercel.app',
+    name: '4bin - Abin Binoy (BROHUHA)',
+  },
   content: {
     renderer: {
       anchorLinks: { h2: false, h3: false, h4: false }
@@ -36,57 +40,147 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'Abin Binoy',
+      htmlAttrs: {
+        lang: 'en'
+      },
+      title: '4bin - Abin Binoy | Full Stack Developer (BROHUHA)',
       meta: [
         {
           name: 'description',
-          content: 'Abin Binoy Portfolio',
+          content: 'Official developer portfolio of 4bin (Abin Binoy / BROHUHA) - Full-Stack Developer specializing in Vue, Nuxt, Python, Android dynamic instrumentation, and AI applications.',
         },
         {
-          name: 'og:title',
-          content: 'Abin Binoy',
+          name: 'keywords',
+          content: '4bin, 4bin binoy, abin binoy, brohuha, abin binoy portfolio, 4bin developer, abin, brohuha github, apkcook, allqr, btscanner',
         },
         {
-          name: 'og:description',
-          content: 'Abin Binoy Portfolio',
+          name: 'author',
+          content: 'Abin Binoy (4bin / BROHUHA)',
         },
         {
-          name: 'og:image',
-          content: `${process.env.APP_URL}/images/logo_circles.png`,
+          name: 'google-site-verification',
+          content: 'googlec6bcbea9d1c6f3b9',
         },
         {
-          name: 'og:image:alt',
-          content: 'Abin Binoy logo',
+          name: 'robots',
+          content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
         },
         {
-          name: 'og:image:width',
-          content: '512',
+          property: 'og:site_name',
+          content: '4bin - Abin Binoy',
         },
         {
-          name: 'og:image:height',
-          content: '512',
+          property: 'og:title',
+          content: '4bin - Abin Binoy | Full Stack Developer (BROHUHA)',
         },
         {
-          name: 'og:url',
-          content: process.env.APP_URL,
+          property: 'og:description',
+          content: 'Official developer portfolio of 4bin (Abin Binoy / BROHUHA) - Full-Stack Developer specializing in Vue, Nuxt, Python, Android dynamic instrumentation, and AI applications.',
         },
         {
-          name: 'og:type',
+          property: 'og:image',
+          content: 'https://4bin.vercel.app/images/og-cover.jpg',
+        },
+        {
+          property: 'og:image:secure_url',
+          content: 'https://4bin.vercel.app/images/og-cover.jpg',
+        },
+        {
+          property: 'og:image:type',
+          content: 'image/jpeg',
+        },
+        {
+          property: 'og:image:alt',
+          content: '4bin - Abin Binoy (BROHUHA) Portfolio Cover',
+        },
+        {
+          property: 'og:image:width',
+          content: '1024',
+        },
+        {
+          property: 'og:image:height',
+          content: '578',
+        },
+        {
+          property: 'og:url',
+          content: 'https://4bin.vercel.app',
+        },
+        {
+          property: 'og:type',
           content: 'website',
         },
+        {
+          name: 'twitter:card',
+          content: 'summary_large_image',
+        },
+        {
+          name: 'twitter:title',
+          content: '4bin - Abin Binoy | Full Stack Developer (BROHUHA)',
+        },
+        {
+          name: 'twitter:description',
+          content: 'Official developer portfolio of 4bin (Abin Binoy / BROHUHA) - Full-Stack Developer.',
+        },
+        {
+          name: 'twitter:image',
+          content: 'https://4bin.vercel.app/images/og-cover.jpg',
+        },
+        {
+          name: 'twitter:image:alt',
+          content: '4bin - Abin Binoy (BROHUHA) Portfolio Cover',
+        },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'author', content: 'Abin Binoy' },
-        { name: 'generator', content: 'Coffe and chocolate' },
         { name: 'format-detection', content: 'telephone=no' },
-        { name: 'apple-mobile-web-app-title', content: 'Abin Binoy' },
+        { name: 'apple-mobile-web-app-title', content: '4bin' },
       ],
       link: [
+        { rel: 'canonical', href: 'https://4bin.vercel.app' },
         { rel: 'icon', type: 'image/svg+xml', media: '(prefers-color-scheme: light)', href: '/favicons/favicon-light-mode.svg' },
         { rel: 'icon', type: 'image/svg+xml', media: '(prefers-color-scheme: dark)', href: '/favicons/favicon-dark-mode.svg' },
         { rel: 'icon', type: 'image/png', sizes: '96x96', href: '/favicons/favicon-96x96.png' },
-        // { rel: 'icon', type: 'image/x-icon', href: '/favicons/favicon.ico' },
         { rel: 'apple-touch-icon', sizes: '180x180', type: 'image/x-icon', href: '/favicons/apple-touch-icon.png' },
         { rel: 'manifest', href: '/favicons/site.webmanifest' },
+      ],
+      script: [
+        {
+          type: 'application/ld+json',
+          children: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@graph': [
+              {
+                '@type': 'WebSite',
+                '@id': 'https://4bin.vercel.app/#website',
+                'url': 'https://4bin.vercel.app',
+                'name': '4bin - Abin Binoy Portfolio',
+                'alternateName': ['4bin', '4bin binoy', 'BROHUHA', 'Abin Binoy'],
+                'description': 'Official developer portfolio of 4bin (Abin Binoy / BROHUHA)',
+                'publisher': {
+                  '@id': 'https://4bin.vercel.app/#person'
+                }
+              },
+              {
+                '@type': 'Person',
+                '@id': 'https://4bin.vercel.app/#person',
+                'name': 'Abin Binoy',
+                'alternateName': ['4bin', '4bin binoy', 'BROHUHA', 'abinbinoy'],
+                'url': 'https://4bin.vercel.app',
+                'jobTitle': 'Full-Stack Developer',
+                'sameAs': [
+                  'https://github.com/BROHUHA',
+                  'https://www.linkedin.com/in/abinbinoy',
+                  'https://abinbinoy.vercel.app'
+                ],
+                'knowsAbout': [
+                  'Full-Stack Web Development',
+                  'Vue.js & Nuxt',
+                  'Python & Machine Learning',
+                  'Android Security & Reverse Engineering',
+                  'Cloud Architecture'
+                ]
+              }
+            ]
+          })
+        }
       ]
     }
   },
@@ -103,7 +197,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      appUrl: process.env.APP_URL
+      appUrl: process.env.APP_URL || 'https://4bin.vercel.app'
     }
   }
 })

@@ -1,5 +1,5 @@
 <template>
-	<img id="logo" src="/images/logo.svg" alt="ABIN BINOY" role="img" class="logo-img" />
+	<img id="logo" src="/images/logo.svg" alt="4bin - Abin Binoy (BROHUHA)" role="img" class="logo-img" />
 </template>
 
 <style scoped>

@@ -25,10 +25,13 @@
   let ctx;
 
   useSeoMeta({
-    title: 'Privacy policy & cookies | Abin Binoy',
-    description: 'Privacy policy & cookies information',
-    ogTitle: 'Privacy policy & cookies | Abin Binoy',
-    ogDescription: 'Privacy policy & cookies information',
+    title: 'Privacy Policy | 4bin - Abin Binoy (BROHUHA)',
+    description: 'Privacy policy and data protection principles of 4bin (Abin Binoy / BROHUHA).',
+    ogTitle: 'Privacy Policy | 4bin - Abin Binoy (BROHUHA)',
+    ogDescription: 'Privacy policy and data protection principles of 4bin (Abin Binoy / BROHUHA).',
+    ogImage: 'https://4bin.vercel.app/images/og-cover.jpg',
+    twitterCard: 'summary_large_image',
+    twitterImage: 'https://4bin.vercel.app/images/og-cover.jpg',
   })
 
   onMounted(() => {

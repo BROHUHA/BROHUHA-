@@ -43,23 +43,26 @@
     </div>
 
     <div ref="timelineRef" class="timeline relative z-10 top-0 left-0 w-screen min-h-lvh">
-      <h1 class="sr-only">Home</h1>
+      <h1 class="sr-only">4bin - Abin Binoy (BROHUHA) | Full-Stack Software Developer Portfolio</h1>
 
-      <HeroHypnotic :play="isPageLoaded" class="hero">
+      <HeroHypnotic ref="heroHypnoticRef" :play="isPageLoaded" class="hero">
         <AppLogo class="logo w-full h-full fill-white" />
       </HeroHypnotic>
 
-      <h2 class="sr-only">Who is Abin Binoy?</h2>
+      <h2 class="sr-only">About 4bin (Abin Binoy / BROHUHA)</h2>
 
       <section ref="block1Ref" class="block1 absolute z-10 inset-0 flex flex-col items-center justify-center w-screen h-lvh">
-        <div v-for="(video, index) in videos" :key="index" class="circles absolute top-0 left-0 w-full h-full" :class="`circle${index}`">
-          <video class="w-full h-full object-cover brightness-75 will-change-[clip-path]" aria-hidden="true" preload="auto" autoplay muted loop playsinline webkit-playsinline disableremoteplayback>
-            <source :src="`/videos/${video.large}`" type="video/mp4" media="(min-width: 1280px)">
-            <source :src="`/videos/${video.small}`" type="video/mp4">
-          </video>
+        <div v-for="(image, index) in circleImages" :key="index" class="circles absolute top-0 left-0 w-full h-full transform-gpu" :class="`circle${index}`">
+          <img
+            :src="image.src"
+            :alt="image.alt"
+            class="w-full h-full object-cover brightness-75 will-change-[clip-path] transform-gpu select-none pointer-events-none"
+            loading="eager"
+            decoding="async"
+          >
         </div>
         <div class="container text-[clamp(1.5rem,_3.5vw,_3.5rem)] prose-black prose-p:leading-normal text-pretty">
-          <p class="relative z-30">I'm Abin Binoy, a BCA graduate and dedicated Full-Stack Developer with over two years of experience, passionate about emerging technologies, continuous learning, and building innovative digital solutions.</p>
+          <p class="relative z-30">I'm Abin Binoy, also known online as 4bin (BROHUHA)—a BCA graduate and dedicated Full-Stack Developer with over two years of experience, passionate about emerging technologies, continuous learning, and building innovative digital solutions.</p>
         </div>
       </section>
 
@@ -67,23 +70,21 @@
         <div class="absolute z-10 top-0 left-0 w-full h-full">
           <video
             ref="showreelRef"
-            class="showreel absolute top-0 left-0 w-full h-full object-cover mask-[url(/images/circles_mask.svg)] mask-type-alpha mask-cover mask-no-repeat mask-center brightness-80 will-change-[mask]"
+            class="showreel absolute top-0 left-0 w-full h-full object-cover mask-[url(/images/circles_mask.svg)] mask-type-alpha mask-cover mask-no-repeat mask-center brightness-80 will-change-[mask] transform-gpu"
             aria-hidden="true"
             preload="auto"
-            autoplay
             muted
             loop
             playsinline
+            webkit-playsinline
             disableremoteplayback
           >
-            <source src="/videos/the_wolf_1080p.mp4" type="video/mp4" media="(min-width: 1920px)">
-            <source src="/videos/the_wolf_720p.mp4" type="video/mp4" media="(min-width: 1280px)">
-            <source src="/videos/the_wolf_480p.mp4" type="video/mp4" media="(min-width: 640px)">
-            <source src="/videos/the_wolf_360p.mp4" type="video/mp4">
+            <source src="/videos/portfolio_1080p.mp4" type="video/mp4" media="(min-width: 1280px)">
+            <source src="/videos/portfolio_720p.mp4" type="video/mp4">
           </video>
         </div>
         <div class="container py-12 lg:py-40 text-[clamp(1.5rem,_3.5vw,_3.5rem)] text-white text-pretty">
-          <p class="relative z-20">Driven by my curiosity and passion for technology, I constantly explore emerging innovations, experiment with creative ideas, and build meaningful digital experiences that combine functionality, creativity, and modern design.</p>
+          <p class="relative z-20">Driven by my curiosity and passion for technology under the moniker 4bin (BROHUHA), I constantly explore emerging innovations, experiment with creative ideas, and build meaningful digital experiences that combine functionality, creativity, and modern design.</p>
         </div>
       </section>
 
@@ -119,29 +120,15 @@
     pageTransition: pageTransitionConfig,
   });
 
-  const videos = {
-    0: {
-      'small': 'wave_720p.mp4',
-      'large': 'wave_1080p.mp4',
-    },
-    1: {
-      'small': 'apkcook_720p.mp4',
-      'large': 'apkcook_1080p.mp4',
-    },
-    2: {
-      'small': 'allqr_720p.mp4',
-      'large': 'allqr_1080p.mp4',
-    },
-    3: {
-      'small': 'portfolio_720p.mp4',
-      'large': 'portfolio_1080p.mp4',
-    },
-    4: {
-      'small': 'wave_720p.mp4',
-      'large': 'wave_1080p.mp4',
-    },
-  }
+  const circleImages = [
+    { src: '/albums/btscanner/cover.png', alt: 'BT Scanner' },
+    { src: '/albums/apkcook/cover.png', alt: 'APKCook' },
+    { src: '/albums/allqr/cover.png', alt: 'AllQR' },
+    { src: '/albums/portfolio/cover.png', alt: 'Portfolio' },
+    { src: '/albums/about/cover.png', alt: 'About' },
+  ];
   const isPageLoaded = ref(false);
+  const heroHypnoticRef = useTemplateRef('heroHypnoticRef');
   const homeTimelineRef = useTemplateRef('homeTimelineRef');
   const timelineRef = useTemplateRef('timelineRef');
   const block1Ref = useTemplateRef('block1Ref');
@@ -238,23 +225,31 @@
   let ctx;
 
   useSeoMeta({
-    title: 'Home | Abin Binoy',
-    description: 'Abin Binoy Portfolio',
-    ogTitle: 'Home | Abin Binoy',
-    ogDescription: 'Abin Binoy Portfolio',
+    title: '4bin - Abin Binoy | Full Stack Developer & Software Engineer (BROHUHA)',
+    description: 'Portfolio of 4bin (Abin Binoy / BROHUHA) — Full-Stack Developer specializing in Vue, Nuxt, Python, Android security, and modern web applications.',
+    keywords: '4bin, 4bin binoy, abin binoy, brohuha, abin binoy portfolio, full stack developer, software engineer, 4bin developer',
+    ogTitle: '4bin - Abin Binoy | Full Stack Developer (BROHUHA)',
+    ogDescription: 'Portfolio of 4bin (Abin Binoy / BROHUHA) — Full-Stack Developer specializing in Vue, Nuxt, Python, Android security, and modern web applications.',
+    ogUrl: 'https://4bin.vercel.app',
+    ogImage: 'https://4bin.vercel.app/images/og-cover.jpg',
+    ogImageAlt: '4bin - Abin Binoy (BROHUHA) Portfolio Cover',
+    ogImageWidth: 1024,
+    ogImageHeight: 578,
+    ogType: 'website',
+    twitterCard: 'summary_large_image',
+    twitterTitle: '4bin - Abin Binoy | Full Stack Developer (BROHUHA)',
+    twitterDescription: 'Portfolio of 4bin (Abin Binoy / BROHUHA) — Full-Stack Developer specializing in Vue, Nuxt, Python, Android security, and modern web applications.',
+    twitterImage: 'https://4bin.vercel.app/images/og-cover.jpg',
   })
 
   onMounted(async () => {
     startMusic();
     await document.fonts.ready;
 
-    if (block1Ref.value) {
-      const circleVideos = block1Ref.value.querySelectorAll('video');
-      circleVideos.forEach(v => {
-        v.muted = true;
-        v.defaultMuted = true;
-        v.play().catch(() => {});
-      });
+    if (showreelRef.value) {
+      showreelRef.value.muted = true;
+      showreelRef.value.defaultMuted = true;
+      showreelRef.value.pause();
     }
 
     const isPortrait = window.matchMedia("(orientation: portrait)").matches;
@@ -335,7 +330,7 @@
             start: 'top top',
             end: '+=1300%',
             pin: true,
-            scrub: 2,
+            scrub: 1,
             preventOverlaps: true,
             fastScrollEnd: true,
             // markers: true,
@@ -354,6 +349,12 @@
         .to('.hero', {
           autoAlpha: 0,
           ease: 'power4.in',
+          onStart: () => {
+            heroHypnoticRef.value?.pauseVideo();
+          },
+          onReverseComplete: () => {
+            heroHypnoticRef.value?.playVideo();
+          }
         }, '<-=1%')
         .from(block1Split.words, {
           yPercent: 100,
@@ -411,6 +412,11 @@
               showreelRef.value.play().catch(() => {});
             }
           },
+          onReverseComplete: () => {
+            if (showreelRef.value && !showreelRef.value.paused) {
+              showreelRef.value.pause();
+            }
+          }
         }, '<')
         .to(showreelRef.value, {
           maskSize: '200% 200%',
@@ -443,6 +449,16 @@
           autoAlpha: 0,
           duration: 0.8,
           ease: 'power2.inOut',
+          onComplete: () => {
+            if (showreelRef.value && !showreelRef.value.paused) {
+              showreelRef.value.pause();
+            }
+          },
+          onReverseComplete: () => {
+            if (showreelRef.value && showreelRef.value.paused) {
+              showreelRef.value.play().catch(() => {});
+            }
+          }
         })
         .to('.animation-circles', {
           scale: isPortrait ? 3 : 1.5,

@@ -50,10 +50,13 @@
   });
 
   useSeoMeta({
-    title: 'Tools | Abin Binoy',
-    description: 'Abin Binoy tools',
-    ogTitle: 'Tools | Abin Binoy',
-    ogDescription: 'Abin Binoy tools',
+    title: 'Developer Tools & Stack | 4bin - Abin Binoy (BROHUHA)',
+    description: 'Tools, technologies, and hardware utilized by 4bin (Abin Binoy / BROHUHA).',
+    ogTitle: 'Developer Tools & Stack | 4bin - Abin Binoy (BROHUHA)',
+    ogDescription: 'Tools, technologies, and hardware utilized by 4bin (Abin Binoy / BROHUHA).',
+    ogImage: 'https://4bin.vercel.app/images/og-cover.jpg',
+    twitterCard: 'summary_large_image',
+    twitterImage: 'https://4bin.vercel.app/images/og-cover.jpg',
   })
 
   const filterSections = [

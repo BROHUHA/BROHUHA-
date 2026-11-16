@@ -1,16 +1,18 @@
 <template>
   <section ref="sectionBandRef" class="section-band">
-    <h1 class="sr-only">Resume</h1>
+    <h1 class="sr-only">4bin (Abin Binoy / BROHUHA) Resume & Professional Experience</h1>
     <div class="flex flex-col lg:flex-row lg:flex-wrap gap-x-4 bg-black text-white border-t-16 border-t-black">
       <div class="flex-auto">
         <ul ref="membersRef" class="members flex flex-col gap-1.5 p-6 text-[clamp(1.05rem,3vw,1.15rem)] [&_span]:block" role="list">
-          <li><span>NAME: Abin Binoy</span></li>
-          <li><span>ROLE: Software Developer</span></li>
+          <li><span>NAME: Abin Binoy (4bin / BROHUHA)</span></li>
+          <li><span>HANDLE: @BROHUHA (GitHub)</span></li>
+          <li><span>PORTFOLIO: 4bin.vercel.app</span></li>
+          <li><span>ROLE: Full-Stack Software Developer</span></li>
           <li><span>EXPERIENCE: 2+ Years</span></li>
-          <li><span>EDUCATION: Bachelor of Computer Applications</span></li>
-          <li><span>PASSION: Exploring New Technologies</span></li>
-          <li><span>INTERESTS: Software, Development & Innovation</span></li>
-          <li><span>APPROACH: Curious Mind, Creative Thinking</span></li>
+          <li><span>EDUCATION: Bachelor of Computer Applications (BCA)</span></li>
+          <li><span>PASSION: Exploring Emerging Technologies</span></li>
+          <li><span>INTERESTS: Software Architecture, AI & Innovative Web Systems</span></li>
+          <li><span>APPROACH: Curious Mind, Creative Engineering</span></li>
           <li><span>MOTTO: Always Learning, Always Building.</span></li>
         </ul>
       </div>
@@ -50,10 +52,16 @@
   let ctx;
 
   useSeoMeta({
-    title: 'Resume | Abin Binoy',
-    description: 'Resume and profile of Abin Binoy, Software Developer',
-    ogTitle: 'Resume | Abin Binoy',
-    ogDescription: 'Resume and profile of Abin Binoy, Software Developer',
+    title: 'Resume & Experience | 4bin - Abin Binoy (BROHUHA)',
+    description: 'Professional resume, skills, and background of 4bin (Abin Binoy / BROHUHA) - Full-Stack Developer with 2+ years of experience.',
+    keywords: '4bin, 4bin binoy, abin binoy resume, brohuha resume, abin binoy experience, software developer kerala',
+    ogTitle: 'Resume & Experience | 4bin - Abin Binoy (BROHUHA)',
+    ogDescription: 'Professional resume, skills, and background of 4bin (Abin Binoy / BROHUHA) - Full-Stack Developer with 2+ years of experience.',
+    ogUrl: 'https://4bin.vercel.app/resume',
+    ogImage: 'https://4bin.vercel.app/images/og-cover.jpg',
+    ogImageAlt: '4bin - Abin Binoy (BROHUHA) Portfolio Cover',
+    twitterCard: 'summary_large_image',
+    twitterImage: 'https://4bin.vercel.app/images/og-cover.jpg',
   })
 
   const handleClick = (e) => {
