@@ -92,8 +92,8 @@ export const albums = [
     slug: 'velodrome',
     title: 'Velodrome',
     images: {
-      cover: 'cover.jpg',
-      back: 'back.jpg',
+      cover: 'cover.png',
+      back: 'back.png',
       galleta: 'galleta.png',
     },
     year: 2013,

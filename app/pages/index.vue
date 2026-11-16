@@ -71,12 +71,11 @@
             class="showreel absolute top-0 left-0 w-full h-full object-cover mask-[url(/images/circles_mask.svg)] mask-type-alpha mask-cover mask-no-repeat mask-center brightness-80 will-change-[mask]"
             aria-hidden="true"
             preload="auto"
+            autoplay
             muted
             loop
             playsinline
             disableremoteplayback
-            @play="onVideoPlay"
-            @pause="onVideoPause"
           >
             <source src="/videos/the_wolf_1080p.mp4" type="video/mp4" media="(min-width: 1920px)">
             <source src="/videos/the_wolf_720p.mp4" type="video/mp4" media="(min-width: 1280px)">
@@ -383,11 +382,6 @@
               showreelRef.value.play().catch(() => {});
             }
           },
-          onReverseComplete: () => {
-            if (showreelRef.value) {
-              showreelRef.value.pause();
-            }
-          },
         }, '<')
         .to(showreelRef.value, {
           maskSize: '200% 200%',
@@ -418,19 +412,8 @@
         }, '<.8')
         .to(block2Ref.value, {
           autoAlpha: 0,
-          onStart: () => {
-            if (showreelRef.value) {
-              showreelRef.value.pause();
-            }
-          },
-          onReverseComplete: () => {
-            if (showreelRef.value) {
-              if (audioRef.value && !audioRef.value.paused) {
-                showreelRef.value.currentTime = audioRef.value.currentTime % (showreelRef.value.duration || 1);
-              }
-              showreelRef.value.play().catch(() => {});
-            }
-          },
+          duration: 0.8,
+          ease: 'power2.inOut',
         })
         .to('.animation-circles', {
           scale: isPortrait ? 3 : 1.5,
