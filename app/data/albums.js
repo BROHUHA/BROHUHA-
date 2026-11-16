@@ -1,68 +1,90 @@
 export const albums = [
   {
     id: 1,
-    slug: 'video-rock',
-    title: 'Video Rock',
+    slug: 'btscanner',
+    title: 'BT SCANNER',
     images: {
-      cover: 'cover.jpg',
-      back: 'back.jpg',
+      cover: 'cover.png',
+      back: 'back.png',
       galleta: 'galleta.png',
     },
-    year: 2017,
-    releaseDate: '2017-04-07',
-    recordLabel: 'Ventilador Music',
+    year: 2026,
+    releaseDate: '2026-01-01',
+    category: 'Computer Vision & Deep Learning',
     meta: {
-      description: 'Video Rock is the fifth and latest album recorded by Abin Binoy.',
+      description: 'BT-Scanner is an AI-powered Brain Tumor MRI Detection and Classification platform by Abin Binoy.',
     },
-    player: {
-      spotify: 'https://open.spotify.com/embed/album/55dCAnS0nH77fJFehhlNiZ',
-      bandcamp: {
-        id: 4201147038,
-        width: '100%',
-        height: '406px'
-      }
-    },
+    basicInfo: 'BT-Scanner is an intelligent computer vision system that analyzes Magnetic Resonance Imaging (MRI) brain scans to detect and classify brain tumors with clinical-grade accuracy.',
+    howToUse: '# Clone repository\ngit clone https://github.com/BROHUHA/BT-Scanner.git\ncd BT-Scanner\n\n# Install dependencies\npip install -r requirements.txt\n\n# Run the application\npython app.py',
+    player: null,
     social: [
       {
-        label: 'Spotify',
-        link: 'https://open.spotify.com/album/55dCAnS0nH77fJFehhlNiZ',
-        icon: 'simple-icons:spotify',
+        label: 'GitHub Repository',
+        link: 'https://github.com/BROHUHA/BT-Scanner',
+        icon: 'simple-icons:github',
       },
       {
-        label: 'Bandcamp',
-        link: 'https://skizophonic.bandcamp.com/album/video-rock',
-        icon: 'simple-icons:bandcamp',
+        label: 'Direct Install (ZIP)',
+        link: 'https://github.com/BROHUHA/BT-Scanner/archive/refs/heads/main.zip',
+        icon: 'lucide:download',
       },
     ],
     videos: {
-      youtube: [
-        {
-          id: 'XWjLfY-i1AE',
-          title: 'Me aburrís todos con la misma mierda',
-        },
-        {
-          id: '-C71_XDxNwc',
-          title: '¿Quién será Aaron Woodman?',
-        },
-        {
-          id: '6zND644fWAc',
-          title: 'Making of Video Rock',
-        },
-      ],
+      youtube: [],
     },
     bgVideo: {
-      fhd: 'vhs_1080p.mp4',
-      hd: 'vhs_720p.mp4',
+      fhd: 'wave_1080p.mp4',
+      hd: 'wave_720p.mp4',
     },
     tracklist: [
-      'Me aburrís todos con la misma mierda',
-      'Coco loco',
-      '¿Quién será Aaron Woodman?',
-      'Corneta!',
-      'Retiro Zen',
-      'Lejos de ti',
-      'La violencia contra el reggaeton está justificada',
-      'Aquí ya hemos estado',
+      {
+        name: 'Python 3.10+',
+        reason: 'Core programming language powering the end-to-end machine learning pipeline, dataset ingestion, and model training routines.',
+      },
+      {
+        name: 'TensorFlow & Keras',
+        reason: 'Primary deep learning framework utilized for model architecture definition, transfer learning, and gradient backpropagation.',
+      },
+      {
+        name: 'PyTorch',
+        reason: 'Used for comparative model experiments, custom loss function evaluations, and rapid tensor computation prototyping.',
+      },
+      {
+        name: 'Convolutional Neural Networks (CNN)',
+        reason: 'Deep residual feature extraction layers specialized in recognizing spatial patterns, margins, and density variations in brain MRI slices.',
+      },
+      {
+        name: 'OpenCV (Image Preprocessing)',
+        reason: 'Computer vision library used for skull stripping, contour detection, CLAHE contrast enhancement, and MRI slice normalization.',
+      },
+      {
+        name: 'Scikit-Learn',
+        reason: 'Utilized for stratified dataset splitting, cross-validation scoring, ROC curve generation, and confusion matrix evaluation.',
+      },
+      {
+        name: 'NumPy & Pandas',
+        reason: 'Essential for multi-dimensional MRI matrix manipulations, array operations, and clinical metadata dataset handling.',
+      },
+      {
+        name: 'Streamlit / Flask Web UI',
+        reason: 'Frontend and API interface providing real-time MRI scan uploading, instantaneous tumor classification, and interactive visual outputs.',
+      },
+      {
+        name: 'Grad-CAM (Visual Explainability)',
+        reason: 'Generates class-activation heatmaps directly over MRI scans to reveal the precise anatomical regions driving the model\'s diagnostic classification.',
+      },
+      {
+        name: 'Matplotlib & Seaborn',
+        reason: 'Generates high-resolution visualization plots for training/validation loss curves, ROC-AUC comparisons, and class distribution charts.',
+      },
+      {
+        name: 'CUDA & cuDNN (GPU Acceleration)',
+        reason: 'NVIDIA hardware acceleration framework enabling high-throughput tensor operations and sub-120ms real-time MRI inference.',
+      },
+      {
+        name: 'Git & GitHub Version Control',
+        reason: 'Manages codebase versioning, CI/CD workflows, open-source reproducibility, and collaborative development.',
+      },
     ],
   },
   {

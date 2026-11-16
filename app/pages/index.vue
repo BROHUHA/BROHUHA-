@@ -1,6 +1,6 @@
 <template>
   <div ref="homeTimelineRef">
-    <PreloaderFull v-if="!isPageLoaded" target=".timeline" text1="loading waves" text2="syncing spiral" @done="isPageLoaded = true" />
+    <PreloaderFull v-if="!isPageLoaded" target=".timeline" text1="loading waves" text2="syncing spiral" @done="isPageLoaded = true; tryPlayAudio()" />
 
     <div ref="timelineRef" class="timeline relative z-10 top-0 left-0 w-screen min-h-lvh">
       <h1 class="sr-only">Home</h1>
@@ -25,15 +25,38 @@
 
       <section ref="block2Ref" class="block2 absolute z-20 inset-0 flex flex-col items-center justify-center w-screen h-lvh">
         <div class="absolute z-10 top-0 left-0 w-full h-full">
-          <video ref="showreelRef" class="showreel absolute top-0 left-0 w-full h-full object-cover mask-[url(/images/circles_mask.svg)] mask-type-alpha mask-cover mask-no-repeat mask-center brightness-80 will-change-[mask]" aria-hidden="true" preload="auto" autoplay muted loop playsinline disableremoteplayback>
-            <source src="/videos/showreel_skizophonic_1080p.mp4" type="video/mp4" media="(min-width: 1920px)">
-            <source src="/videos/showreel_skizophonic_720p.mp4" type="video/mp4" media="(min-width: 1280px)">
-            <source src="/videos/showreel_skizophonic_480p.mp4" type="video/mp4" media="(min-width: 640px)">
-            <source src="/videos/showreel_skizophonic_360p.mp4" type="video/mp4">
+          <video
+            ref="showreelRef"
+            class="showreel absolute top-0 left-0 w-full h-full object-cover mask-[url(/images/circles_mask.svg)] mask-type-alpha mask-cover mask-no-repeat mask-center brightness-80 will-change-[mask]"
+            aria-hidden="true"
+            preload="auto"
+            autoplay
+            :muted="isVideoMuted"
+            loop
+            playsinline
+            disableremoteplayback
+          >
+            <source src="/videos/the_wolf_1080p.mp4" type="video/mp4" media="(min-width: 1920px)">
+            <source src="/videos/the_wolf_720p.mp4" type="video/mp4" media="(min-width: 1280px)">
+            <source src="/videos/the_wolf_480p.mp4" type="video/mp4" media="(min-width: 640px)">
+            <source src="/videos/the_wolf_360p.mp4" type="video/mp4">
           </video>
         </div>
         <div class="container py-12 lg:py-40 text-[clamp(1.5rem,_3.5vw,_3.5rem)] text-white text-pretty">
           <p class="relative z-20">Driven by my curiosity and passion for technology, I constantly explore emerging innovations, experiment with creative ideas, and build meaningful digital experiences that combine functionality, creativity, and modern design.</p>
+        </div>
+
+        <!-- Song / Audio Toggle Button -->
+        <div class="audio-toggle-wrapper absolute z-30 bottom-6 sm:bottom-10 right-6 sm:right-12">
+          <button
+            type="button"
+            class="no-anim-underline inline-flex items-center gap-2.5 px-4 sm:px-5 py-2.5 rounded-full border border-white/30 hover:border-white bg-black/60 hover:bg-black/90 backdrop-blur-md text-white transition-all duration-300 shadow-2xl cursor-pointer active:scale-95 text-xs sm:text-sm font-bold tracking-wide group"
+            :title="isVideoMuted ? 'Enable song audio (SIAMÉS - The Wolf)' : 'Mute audio'"
+            @click="toggleAudio"
+          >
+            <Icon :name="isVideoMuted ? 'solar:volume-cross-bold' : 'solar:volume-loud-bold'" class="text-lg transition-transform group-hover:scale-110" :class="{ 'text-[#00ffc7] animate-pulse': !isVideoMuted }" />
+            <span>{{ isVideoMuted ? 'Enable Music' : 'Music Playing' }}</span>
+          </button>
         </div>
       </section>
 
@@ -98,6 +121,38 @@
   const block2Ref = useTemplateRef('block2Ref');
   const showreelRef = useTemplateRef('showreelRef');
   const buttonHypnoticRef = useTemplateRef('buttonHypnoticRef');
+  const isVideoMuted = ref(false); // Music enabled by default
+
+  const toggleAudio = () => {
+    if (!showreelRef.value) return;
+    isVideoMuted.value = !isVideoMuted.value;
+    showreelRef.value.muted = isVideoMuted.value;
+    if (!isVideoMuted.value) {
+      showreelRef.value.play().catch(() => {});
+    }
+  };
+
+  const tryPlayAudio = () => {
+    if (!showreelRef.value || isVideoMuted.value) return;
+    showreelRef.value.muted = false;
+    showreelRef.value.play().catch(() => {
+      // Browser autoplay policy requires user interaction first: unlock on first gesture
+      const unlockAudio = () => {
+        if (showreelRef.value && !isVideoMuted.value) {
+          showreelRef.value.muted = false;
+          showreelRef.value.play().catch(() => {});
+        }
+        window.removeEventListener('click', unlockAudio);
+        window.removeEventListener('scroll', unlockAudio);
+        window.removeEventListener('touchstart', unlockAudio);
+        window.removeEventListener('wheel', unlockAudio);
+      };
+      window.addEventListener('click', unlockAudio, { once: true });
+      window.addEventListener('scroll', unlockAudio, { once: true });
+      window.addEventListener('touchstart', unlockAudio, { once: true });
+      window.addEventListener('wheel', unlockAudio, { once: true });
+    });
+  };
   let block1Split, block2Split, block3Split;
   let ctx;
 
@@ -255,6 +310,9 @@
           autoAlpha: 1,
           maskSize: '30% 30%',
           ease: 'power3.inOut',
+          onStart: () => {
+            tryPlayAudio();
+          },
         }, '<')
         .to(showreelRef.value, {
           maskSize: '200% 200%',

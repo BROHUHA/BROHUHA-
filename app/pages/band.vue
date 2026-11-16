@@ -4,18 +4,17 @@
     <div class="flex flex-col lg:flex-row lg:flex-wrap gap-x-4 bg-black text-white border-t-16 border-t-black">
       <div class="flex-auto">
         <ul ref="membersRef" class="members flex flex-col gap-1.5 p-6 text-[clamp(1.05rem,3vw,1.15rem)] [&_span]:block" role="list">
-          <li><span>Vocals & Guitar: Nacho Galí</span></li>
-          <li><span>Guitar: Dan Alcaide</span></li>
-          <li><span>Guitar: Fede Trillo</span></li>
-          <li><span>Keyboards: Eloy Alcaide</span></li>
-          <li><span>Bass & Trombone: Javier Gascón</span></li>
-          <li><span>Bass: Carlos Sánchez</span></li>
-          <li><span>Drums: Carlos Cruz</span></li>
-          <li><span>Drums: David Marco</span></li>
-          <li><span>Skizonettes:<br> Sofía Royo & Nuria Pallares & Sol González</span></li>
+          <li><span>NAME: Abin Binoy</span></li>
+          <li><span>ROLE: Software Developer</span></li>
+          <li><span>EXPERIENCE: 2+ Years</span></li>
+          <li><span>EDUCATION: Bachelor of Computer Applications</span></li>
+          <li><span>PASSION: Exploring New Technologies</span></li>
+          <li><span>INTERESTS: Software, Development & Innovation</span></li>
+          <li><span>APPROACH: Curious Mind, Creative Thinking</span></li>
+          <li><span>MOTTO: Always Learning, Always Building.</span></li>
         </ul>
       </div>
-      <figure v-for="(image, index) in images" :key="image.src" :class="`figure-${index}`" class="relative flex-auto overflow-hidden">
+      <figure v-for="(image, index) in images" :key="index" :class="`figure-${index}`" class="relative flex-auto overflow-hidden">
         <div class="reveal-columns absolute z-90 inset-0 w-full h-full">
           <DynamicColumns :min="5" :max="6" />
         </div>
@@ -25,7 +24,7 @@
         <figcaption class="relative z-10 h-full text-white bg-black">{{ image.alt }}</figcaption>
       </figure>
     </div>
-    <p class="p-6 text-pretty">&copy; All images are copyright to their respective owners.</p>
+    <p class="p-6 text-pretty">&copy; All images are copyright to Abin Binoy.</p>
   </section>
 </template>
 
@@ -52,9 +51,9 @@
 
   useSeoMeta({
     title: 'Resume | Abin Binoy',
-    description: 'Who we are and what we look like',
+    description: 'Resume and profile of Abin Binoy, Software Developer',
     ogTitle: 'Resume | Abin Binoy',
-    ogDescription: 'Who we are and what we look like',
+    ogDescription: 'Resume and profile of Abin Binoy, Software Developer',
   })
 
   const handleClick = (e) => {

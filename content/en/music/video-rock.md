@@ -1,5 +1,5 @@
 ---
-title: Video Rock
+title: BT SCANNER
 ---
 
 This album is sung in Spanish<br>

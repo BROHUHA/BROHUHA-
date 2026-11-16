@@ -87,8 +87,30 @@
   a {
     @apply transition-all;
   }
-  main a {
+  main a:not(.no-anim-underline) {
     @apply anim-underline-gray;
+  }
+  .no-anim-underline {
+    text-decoration: none !important;
+  }
+  .no-anim-underline::before,
+  .no-anim-underline::after,
+  .no-anim-underline:hover::before,
+  .no-anim-underline:hover::after {
+    display: none !important;
+    content: none !important;
+    height: 0 !important;
+    width: 0 !important;
+    opacity: 0 !important;
+  }
+
+  /* Responsive markdown content inside projects */
+  .content table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   h1,
