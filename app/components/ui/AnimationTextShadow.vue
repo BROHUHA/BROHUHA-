@@ -8,6 +8,7 @@
   import gsap from "gsap";
 
   const movement = 15;
+  const slightShadow = '0 1px 4px rgba(0, 0, 0, 0.35)';
 
   const handleMouseMove = (e) => {
     // @todo Make a composable.
@@ -19,12 +20,18 @@
     const x = Math.round(((relX - rect.width / 2) / rect.width) * movement);
     const y = Math.round(((relY - rect.height / 2) / rect.height) * movement);
 
-    gsap.set(target, { textShadow: `${x}px ${y}px 2px #ff0047, ${-x}px ${-y}px 2px #00ffc7` })
+    gsap.set(target, { textShadow: `${x}px ${y}px 2px #ff0047, ${-x}px ${-y}px 2px #00ffc7, ${slightShadow}` })
   }
 
   const handleMouseOut = (e) => {
     const target = e.currentTarget;
 
-    gsap.set(target, { textShadow: '0px 0px 0px #ff0047, 0px 0px 0px #00ffc7' })
+    gsap.set(target, { textShadow: slightShadow })
   }
 </script>
+
+<style scoped>
+.anim-text-shadow {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+</style>

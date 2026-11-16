@@ -24,14 +24,25 @@
     });
   })
 
-  // onMounted(() => {
-  //   // <video> do not autoplay in the <NuxtLayout> using <Transition> component.
-  //   // @see https://github.com/nuxt/nuxt/issues/26262
-  //   const videos = document.querySelectorAll("video");
-  //   videos.forEach((video) => {
-  //     if (video.autoplay === true) {
-  //       video.play();
-  //     }
-  //   });
-  // })
+  const playAllAutoplayVideos = () => {
+    const videos = document.querySelectorAll("video");
+    videos.forEach((video) => {
+      if (video.hasAttribute("autoplay") || video.autoplay) {
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {});
+        }
+      }
+    });
+  };
+
+  onMounted(() => {
+    playAllAutoplayVideos();
+    ['pointerdown', 'touchstart', 'scroll', 'wheel', 'keydown'].forEach(evt => {
+      window.addEventListener(evt, playAllAutoplayVideos, { passive: true, once: true });
+    });
+  });
 </script>

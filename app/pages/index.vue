@@ -6,7 +6,6 @@
     <audio
       ref="audioRef"
       src="/audio/the_wolf.mp3"
-      autoplay
       loop
       preload="auto"
       playsinline
@@ -152,6 +151,7 @@
   const audioRef = useTemplateRef('audioRef');
   const isMuted = ref(false);
   const isRippling = ref(false);
+  let hasMusicStarted = false;
 
   const triggerRipple = () => {
     isRippling.value = true;
@@ -160,33 +160,47 @@
     }, 600);
   };
 
+  const unlockAudio = () => {
+    ['pointerdown', 'touchstart', 'touchend', 'click', 'scroll', 'wheel', 'keydown'].forEach(evt => {
+      window.removeEventListener(evt, unlockAudio);
+    });
+
+    if (audioRef.value && audioRef.value.paused) {
+      if (!hasMusicStarted) {
+        audioRef.value.currentTime = 0;
+        hasMusicStarted = true;
+      }
+      audioRef.value.muted = false;
+      audioRef.value.play().then(() => {
+        isMuted.value = false;
+      }).catch(() => {});
+    }
+  };
+
   const startMusic = () => {
     if (!audioRef.value) return;
-    audioRef.value.currentTime = 0;
+
+    // If audio is already active and playing, NEVER reset currentTime or restart
+    if (!audioRef.value.paused && hasMusicStarted) {
+      return;
+    }
+
+    if (!hasMusicStarted) {
+      audioRef.value.currentTime = 0;
+    }
     audioRef.value.muted = false;
     isMuted.value = false;
 
     const playPromise = audioRef.value.play();
     if (playPromise !== undefined) {
       playPromise.then(() => {
+        hasMusicStarted = true;
         isMuted.value = false;
       }).catch(() => {
-        // Autoplay policy prevented immediate playback without user interaction (e.g. mobile)
-        // Keep isMuted = false in intent, and automatically start on very first user gesture anywhere
-        const unlock = () => {
-          if (audioRef.value) {
-            audioRef.value.currentTime = 0;
-            audioRef.value.muted = false;
-            audioRef.value.play().then(() => {
-              isMuted.value = false;
-            }).catch(() => {});
-          }
-          ['pointerdown', 'touchstart', 'touchend', 'click', 'scroll', 'wheel', 'keydown'].forEach(evt => {
-            window.removeEventListener(evt, unlock);
-          });
-        };
+        // Autoplay policy prevented immediate playback without interaction (e.g. mobile)
+        // Attach one-time unlock listeners
         ['pointerdown', 'touchstart', 'touchend', 'click', 'scroll', 'wheel', 'keydown'].forEach(evt => {
-          window.addEventListener(evt, unlock, { passive: true, once: true });
+          window.addEventListener(evt, unlockAudio, { passive: true, once: true });
         });
       });
     }
@@ -197,14 +211,15 @@
     if (!audioRef.value) return;
 
     if (isMuted.value || audioRef.value.paused) {
-      // Unmute and always play from the beginning
+      // Unmute & play from start
       audioRef.value.currentTime = 0;
       audioRef.value.muted = false;
+      hasMusicStarted = true;
       audioRef.value.play().then(() => {
         isMuted.value = false;
       }).catch(() => {});
     } else {
-      // Mute / pause
+      // Mute & pause
       audioRef.value.muted = true;
       audioRef.value.pause();
       isMuted.value = true;
@@ -212,6 +227,9 @@
   };
 
   onBeforeUnmount(() => {
+    ['pointerdown', 'touchstart', 'touchend', 'click', 'scroll', 'wheel', 'keydown'].forEach(evt => {
+      window.removeEventListener(evt, unlockAudio);
+    });
     if (audioRef.value) {
       audioRef.value.pause();
     }
@@ -376,8 +394,10 @@
           ease: 'power3.inOut',
           onStart: () => {
             if (showreelRef.value) {
-              if (audioRef.value && !audioRef.value.paused) {
-                showreelRef.value.currentTime = audioRef.value.currentTime % (showreelRef.value.duration || 1);
+              showreelRef.value.muted = true;
+              showreelRef.value.defaultMuted = true;
+              if (audioRef.value && !audioRef.value.paused && Number.isFinite(showreelRef.value.duration) && showreelRef.value.duration > 0) {
+                showreelRef.value.currentTime = audioRef.value.currentTime % showreelRef.value.duration;
               }
               showreelRef.value.play().catch(() => {});
             }

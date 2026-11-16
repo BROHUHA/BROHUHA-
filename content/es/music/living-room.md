@@ -1,31 +1,23 @@
 ---
-title: Living Room
+title: PORTFOLIO
 ---
 
-Grabado, mezclado y masterizado en los estudios APK de Valencia (España) en agosto de 2009.
+## Portafolio Interactivo y Plataforma Digital
 
-Productor: Octavio Hidalgo<br>
-Fotografía: Iván Dabón<br>
-Diseño gráfico: [Dan Alcaide](https://www.danalcaide.com)<br>
+**Portafolio de Abin Binoy** es una experiencia web interactiva de alto rendimiento desarrollada con Vue 3, GSAP y Tailwind CSS v4 para exhibir proyectos de ingeniería de software, seguridad y aprendizaje automático.
 
-## Reconocimientos
+---
 
-- Top 10 demos/EP 2009 - Mondosonoro Valencia: [Living Room EP en Mondosonoro](https://issuu.com/mondosonoroval/docs/mondoissuuene10)
+### Características Principales
 
-## Instrumentos utilizados
+- **Coreografía de Animación**: Secuencias dinámicas con GSAP, efectos de máscara y texto cinético.
+- **Experiencia 3D Interactiva**: Interacción tridimensional con estuche de CD físico y extracción de disco.
+- **Desplazamiento Ultrasuave**: Integración con Lenis para navegación fluida a 60 fps.
 
-- Guitarra Fender Telecaster
-- Guitarra Epiphone Casino
-- Bajo Epiphone Thunderbird
-- Teclado Korg CX3
-- Teclado Moog Little Phatty Stage II
-- Batería Pearl
+---
 
-## Amplificadores
+### Sitio Web
 
-- Orange Rocker 30C
-
-## Pedales de efectos
-
-- Phaser Electro Harmonix Small Stone
-- Wah-Wah Cry Baby
+- **Sitio en vivo**: [abinbinoy.vercel.app](https://abinbinoy.vercel.app)
+- **Autor**: Abin Binoy
+- **Licencia**: MIT License

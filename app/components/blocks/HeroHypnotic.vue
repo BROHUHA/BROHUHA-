@@ -38,6 +38,12 @@
   let ctx;
 
   onMounted(() => {
+    if (videoRef.value) {
+      videoRef.value.muted = true;
+      videoRef.value.defaultMuted = true;
+      videoRef.value.play().catch(() => {});
+    }
+
     ctx = gsap.context(() => {
       const tl = gsap
         .timeline({

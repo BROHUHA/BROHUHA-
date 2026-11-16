@@ -1,38 +1,24 @@
 ---
-title: Gossip
+title: ALLQR
 ---
 
-Grabado, mezclado y masterizado en los estudios APK de Valencia (España) en enero y febrero de 2011.
+## Generador de Códigos QR y Tarjetas Digitales con Privacidad Total
 
-Productor: Octavio Hidalgo<br>
-Fotografía: Pablo Serrano<br>
-Diseño gráfico: [Dan Alcaide](https://www.danalcaide.com)<br>
+**AllQR (QRCARD)** es una plataforma digital de código abierto desarrollada por **Abin Binoy** para generar tarjetas QR imprimibles y elegantes para redes WiFi, URLs y perfiles sociales con ejecución 100% en el navegador y sin recopilación de datos.
 
-## Reconocimientos
+---
 
-- Top 10 álbumes 2011 - Mondosonoro Valencia
+### Características Principales
 
-## Instrumentos utilizados
+- **Conexión WiFi Instantánea**: Generación de códigos QR compatibles con estándares WPA/WPA2/WPA3, WEP y redes empresariales WPA2-EAP.
+- **Exportación de Alta Resolución**: Descarga directa de tarjetas en formato PNG e impresión optimizada con maquetación vertical y horizontal.
+- **Privacidad Absoluta**: Todo el procesamiento se realiza localmente en el dispositivo sin enviar contraseñas ni credenciales a servidores externos.
+- **Diseño Glassmorphism**: Interfaz moderna basada en React 17 y Evergreen UI con soporte para más de 30 idiomas y diseño responsivo.
 
-- Guitarra Rickenbacker 330
-- Guitarra Fender Stratocaster
-- Guitarra acústica Takamine
-- Bajo Epiphone Thunderbird
-- Batería Ludwig
-- Teclado Korg CX3
-- Teclado Moog Little Phatty Stage II
-- Teclado Nord Electro 3
-- Teclado Arp Solina
+---
 
-## Amplificadores
+### Repositorio de Código Abierto
 
-- Orange Rocker 30C
-- Marshall JCM900
-- Cabezal Ampeg en pantalla SBL
-
-## Pedales de efectos
-
-- Wah-Wah Cry Baby
-- Delay Danelectro Pork Chop
-- Phaser Electro Harmonix Small Stone
-- Fuzz Electro Harmonix Bass Big Muff Pi
+- **Repositorio GitHub**: [github.com/BROHUHA/QRCARD](https://github.com/BROHUHA/QRCARD)
+- **Autor**: Abin Binoy
+- **Licencia**: MIT License

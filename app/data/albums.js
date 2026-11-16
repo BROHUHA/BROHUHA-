@@ -107,6 +107,11 @@ export const albums = [
     player: null,
     social: [
       {
+        label: 'Visit Site',
+        link: 'https://apkcook.vercel.app',
+        icon: 'lucide:globe',
+      },
+      {
         label: 'GitHub Repository',
         link: 'https://github.com/BROHUHA/APKCook',
         icon: 'simple-icons:github',
@@ -121,8 +126,8 @@ export const albums = [
       youtube: [],
     },
     bgVideo: {
-      fhd: 'wave_1080p.mp4',
-      hd: 'wave_720p.mp4',
+      fhd: 'apkcook_1080p.mp4',
+      hd: 'apkcook_720p.mp4',
     },
     tracklist: [
       {
@@ -177,125 +182,173 @@ export const albums = [
   },
   {
     id: 3,
-    slug: 'gossip',
-    title: 'Gossip',
+    slug: 'allqr',
+    title: 'ALLQR',
     images: {
-      cover: 'cover.jpg',
-      back: 'back.jpg',
+      cover: 'cover.png',
+      back: 'back.png',
       galleta: 'galleta.png',
     },
-    year: 2011,
-    releaseDate: '2011-02-28',
-    recordLabel: '',
+    year: 2025,
+    releaseDate: '2025-01-01',
+    category: 'Privacy-First QR Engineering & Utilities',
     meta: {
-      description: 'Gossip is the third album recorded by Abin Binoy.',
+      description: 'AllQR (QRCARD) is an open-source, privacy-first QR code generator and printable card platform by Abin Binoy.',
     },
-    player: {
-      spotify: 'https://open.spotify.com/embed/album/55dCAnS0nH77fJFehhlNiZ',
-      bandcamp: {
-        id: 3447235156,
-        width: '100%',
-        height: '439px'
-      }
-    },
+    basicInfo: 'AllQR is an open-source, client-side digital utility and printable card generator. It enables users to instantly encode WiFi credentials, URLs, and contact info into custom QR codes with high-resolution image and print export, running 100% in-browser with zero remote data collection.',
+    howToUse: '# Clone repository\ngit clone https://github.com/BROHUHA/QRCARD.git\ncd QRCARD\n\n# Install dependencies\nnpm install --legacy-peer-deps\n\n# Start development server\nnpm start',
+    player: null,
     social: [
       {
-        label: 'Spotify',
-        link: 'https://open.spotify.com/album/2hfB4iLT48MfxtPa55cLKN',
-        icon: 'simple-icons:spotify',
+        label: 'GitHub Repository',
+        link: 'https://github.com/BROHUHA/QRCARD',
+        icon: 'simple-icons:github',
       },
       {
-        label: 'Bandcamp',
-        link: 'https://skizophonic.bandcamp.com/album/gossip',
-        icon: 'simple-icons:bandcamp',
+        label: 'Visit Site',
+        link: 'https://allqr.vercel.app',
+        icon: 'lucide:globe',
       },
     ],
     videos: {
-      youtube: [
-        {
-          id: 'EgaE34PJiFc',
-          title: 'I’m Gonna Get Rid Of You',
-        },
-        {
-          id: 'wi6xNiO0xZQ',
-          title: 'Annie - Conciertos de Radio 3 - TVE',
-        },
-      ],
+      youtube: [],
     },
     bgVideo: {
-      fhd: 'woman_finger_1080p.mp4',
-      hd: 'woman_finger_720p.mp4',
+      fhd: 'allqr_1080p.mp4',
+      hd: 'allqr_720p.mp4',
     },
     tracklist: [
-      'I Must Doubt',
-      'I Wait',
-      'She’s Not Late',
-      'Gossip',
-      'I’m Gonna Get Rid Of You',
-      'Annie',
-      'She Blushes',
-      'Drinking Alone',
-      'Today Save Your Weekend (Tomorrow Save Your Soul) - Herrasti Remix',
+      {
+        name: 'React 17',
+        reason: 'Component-driven frontend architecture handling dynamic state management, instant credential binding, and real-time live preview rendering.',
+      },
+      {
+        name: 'qrcode.react Engine',
+        reason: 'Vector QR matrix generation library supporting configurable error correction levels (L, M, Q, H) to maintain scan reliability even on damaged prints.',
+      },
+      {
+        name: 'WiFi Protocol URI Standardization',
+        reason: 'Generates compliant WiFi network URI schemas supporting WPA, WPA2, WPA3, WEP, and 802.1X WPA2-EAP enterprise network configurations.',
+      },
+      {
+        name: 'Evergreen UI Component Suite',
+        reason: 'Enterprise-grade React design system delivering accessible form controls, layout primitives, and polished interactive settings panels.',
+      },
+      {
+        name: 'html-to-image DOM Rasterization',
+        reason: 'Converts live DOM nodes and SVG graphics into high-resolution Canvas elements for pixel-perfect card rasterization.',
+      },
+      {
+        name: 'downloadjs File Dispatcher',
+        reason: 'Lightweight client-side file downloader facilitating instantaneous PNG card generation directly to the user\'s local filesystem.',
+      },
+      {
+        name: 'i18next Internationalization',
+        reason: 'Localization framework supporting 30+ global languages with automated browser locale detection and dynamic RTL layout switching for Arabic, Persian, and Urdu.',
+      },
+      {
+        name: 'Zero-Telemetry Security Architecture',
+        reason: 'Guarantees 100% client-side computation, ensuring WiFi passwords and personal data never leave the browser or touch remote servers.',
+      },
+      {
+        name: 'Glassmorphism Design System',
+        reason: 'Modern visual styling tokens incorporating frosted backdrop filters, delicate elevation highlights, and fluid micro-interactions.',
+      },
+      {
+        name: 'Print-Optimized CSS (@media print)',
+        reason: 'Tailored print stylesheets handling bleed margins, portrait and landscape orientation toggling, and physical wallet/desk card formats.',
+      },
+      {
+        name: 'Progressive Web App (PWA)',
+        reason: 'Web App Manifest and service worker offline caching enabling standalone execution across mobile and desktop without internet connectivity.',
+      },
+      {
+        name: 'Git & GitHub Version Control',
+        reason: 'Manages open-source repository history, community localization contributions, continuous integration, and releases.',
+      },
     ],
   },
   {
     id: 4,
-    slug: 'living-room',
-    title: 'Living room',
+    slug: 'portfolio',
+    title: 'PORTFOLIO',
     images: {
-      cover: 'cover.jpg',
-      back: 'back.jpg',
+      cover: 'cover.png',
+      back: 'back.png',
       galleta: 'galleta.png',
     },
-    year: 2009,
-    releaseDate: '2009-09-19',
-    recordLabel: '',
+    year: 2025,
+    releaseDate: '2025-01-01',
+    category: 'Interactive Portfolio & Creative Development',
     meta: {
-      description: 'Living Room is the second album/EP recorded by Abin Binoy.',
+      description: 'The official interactive developer portfolio of Abin Binoy, built with Vue 3, GSAP, Tailwind CSS v4, and modern web animations.',
     },
-    player: {
-      spotify: 'https://open.spotify.com/embed/album/55dCAnS0nH77fJFehhlNiZ',
-      bandcamp: {
-        id: 2081532899,
-        width: '100%',
-        height: '340px'
-      }
-    },
+    basicInfo: 'The official interactive portfolio platform of Abin Binoy. Engineered with Vue 3, GSAP timeline choreography, Lenis smooth scrolling, Tailwind CSS v4, and reactive micro-interactions to showcase full-stack systems, machine learning utilities, and security laboratories.',
+    howToUse: null,
+    player: null,
     social: [
       {
-        label: 'Spotify',
-        link: 'https://open.spotify.com/album/2nzWHHLP7S2Go2It4pRo6d?si=fuZXu9eCQZm665EuRn4MVQ',
-        icon: 'simple-icons:spotify',
-      },
-      {
-        label: 'Bandcamp',
-        link: 'http://skizophonic.bandcamp.com/album/living-room',
-        icon: 'simple-icons:bandcamp',
+        label: 'Visit Site',
+        link: 'https://abinbinoy.vercel.app',
+        icon: 'lucide:globe',
       },
     ],
     videos: {
-      youtube: [
-        {
-          id: 'Thhr_smM1YE',
-          title: 'Living Room - Conciertos de Radio 3 - TVE',
-        },
-        // {
-        //   id: 'pWc9u1KQ2ms',
-        //   title: 'Living Room',
-        // },
-      ],
+      youtube: [],
     },
     bgVideo: {
-      fhd: 'factories_1080p.mp4',
-      hd: 'factories_720p.mp4',
+      fhd: 'portfolio_1080p.mp4',
+      hd: 'portfolio_720p.mp4',
     },
     tracklist: [
-      'Shut Up',
-      'Today: Save Your Weekend (Tomorrow: Save Your Soul)',
-      'It Was My Fault',
-      'Still Forget',
-      'Living Room',
-      'Squaring The Circle',
+      {
+        name: 'Vue 3 & Composition API',
+        reason: 'Modern reactive user interface architecture leveraging <script setup> single-file components and declarative state pipelines.',
+      },
+      {
+        name: 'GSAP & ScrollTrigger',
+        reason: 'Advanced timeline choreography orchestrating cinematic viewport reveals, 3D card perspective flipping, and complex SVG morphing animations.',
+      },
+      {
+        name: 'Tailwind CSS v4',
+        reason: 'Next-generation utility-first stylesheet engine with Vite integration, CSS variables, and fluid responsive typography.',
+      },
+      {
+        name: 'Lenis Smooth Scroll',
+        reason: 'High-performance inertial scroll engine ensuring fluid 60fps scrolling across high-refresh-rate desktop and mobile displays.',
+      },
+      {
+        name: 'Vite 6 Fast Bundler',
+        reason: 'Lightning-fast frontend development server and Rollup-based production bundler with instant Hot Module Replacement (HMR).',
+      },
+      {
+        name: 'tsParticles Interactive Engine',
+        reason: 'Hardware-accelerated dynamic particle systems providing interactive cosmic and wave background effects.',
+      },
+      {
+        name: 'Lucide Icons Suite',
+        reason: 'Comprehensive, lightweight SVG iconography library delivering crisp monochrome symbols for interface controls and actions.',
+      },
+      {
+        name: 'Unhead & SEO Architecture',
+        reason: 'Automated dynamic meta tags, OpenGraph previews, and canonical link generation for maximum search engine indexability.',
+      },
+      {
+        name: 'Vue Router 4',
+        reason: 'Declarative client-side routing with custom animated page transition hooks and smooth view state preservation.',
+      },
+      {
+        name: 'Vue I18n Internationalization',
+        reason: 'Multi-language internationalization framework enabling seamless switching between English and Spanish localizations.',
+      },
+      {
+        name: 'Responsive 3D Jewel Case Physics',
+        reason: 'Custom CSS 3D transforms (rotate-y-180, perspective-[1000px], transform-3d) simulating physical CD jewel cases and disc extraction.',
+      },
+      {
+        name: 'Vercel Cloud Edge Deployment',
+        reason: 'Global edge network hosting providing instant SSD caching, automatic SSL, and sub-second global asset delivery.',
+      },
     ],
   },
   {

@@ -115,11 +115,29 @@
   definePageMeta({
     alias: '/works/:slug',
     pageTransition: pageTransitionFadeConfig,
+    key: route => route.fullPath,
+    middleware: [
+      (to) => {
+        const slugAliases = {
+          velodrome: 'apkcook',
+          gossip: 'allqr',
+          'living-room': 'portfolio',
+        };
+        if (to.params.slug && slugAliases[to.params.slug]) {
+          return navigateTo(`/works/${slugAliases[to.params.slug]}`, { replace: true });
+        }
+      }
+    ]
   });
 
   const config = useRuntimeConfig()
   const routeSlug = useRoute().params.slug
-  const slug = routeSlug === 'velodrome' ? 'apkcook' : routeSlug
+  const slugAliases = {
+    velodrome: 'apkcook',
+    gossip: 'allqr',
+    'living-room': 'portfolio',
+  }
+  const slug = slugAliases[routeSlug] || routeSlug
   const { data: post } = await useAsyncData(slug, () => {
     return queryCollection('music').path(`/en/music/${slug}`).first()
   })
