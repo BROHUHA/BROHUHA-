@@ -460,7 +460,7 @@
       } else {
         throw new Error(res?.message || 'Failed to dispatch message.');
       }
-    } catch (err: any) {
+    } catch (err) {
       errorMessage.value =
         err?.data?.statusMessage ||
         err?.message ||
