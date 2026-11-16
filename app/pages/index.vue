@@ -1,6 +1,6 @@
 <template>
   <div ref="homeTimelineRef">
-    <PreloaderFull v-if="!isPageLoaded" target=".timeline" text1="loading waves" text2="syncing spiral" @done="isPageLoaded = true; tryPlayAudio()" />
+    <PreloaderFull v-if="!isPageLoaded" target=".timeline" text1="loading waves" text2="syncing spiral" @done="isPageLoaded = true" />
 
     <div ref="timelineRef" class="timeline relative z-10 top-0 left-0 w-screen min-h-lvh">
       <h1 class="sr-only">Home</h1>
@@ -30,8 +30,7 @@
             class="showreel absolute top-0 left-0 w-full h-full object-cover mask-[url(/images/circles_mask.svg)] mask-type-alpha mask-cover mask-no-repeat mask-center brightness-80 will-change-[mask]"
             aria-hidden="true"
             preload="auto"
-            autoplay
-            :muted="isVideoMuted"
+            muted
             loop
             playsinline
             disableremoteplayback
@@ -48,48 +47,25 @@
           <p class="relative z-20">Driven by my curiosity and passion for technology, I constantly explore emerging innovations, experiment with creative ideas, and build meaningful digital experiences that combine functionality, creativity, and modern design.</p>
         </div>
 
-        <!-- Song / Music Controller Floating Pill -->
-        <div class="audio-toggle-wrapper absolute z-30 bottom-6 sm:bottom-10 right-4 sm:right-12">
-          <div class="inline-flex items-center gap-1.5 sm:gap-2.5 p-1.5 sm:p-2 pr-3 sm:pr-4 rounded-full border border-white/20 hover:border-white/40 bg-black/70 hover:bg-black/85 backdrop-blur-md text-white transition-all duration-300 shadow-2xl select-none">
-            <!-- Play / Pause Action Button -->
-            <button
-              type="button"
-              class="no-anim-underline inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 hover:bg-white/25 active:scale-95 transition-all text-white cursor-pointer text-xs sm:text-sm font-semibold tracking-wide group"
-              :title="isAudioPaused ? 'Play music' : 'Pause music'"
-              @click="togglePlayPause"
-            >
-              <Icon
-                :name="isAudioPaused ? 'solar:play-bold' : 'solar:pause-bold'"
-                class="text-base sm:text-lg transition-transform group-hover:scale-110"
-                :class="{ 'text-[#00ffc7]': !isAudioPaused }"
-              />
-              <span>{{ isAudioPaused ? 'Play' : 'Pause' }}</span>
-            </button>
-
-            <!-- Song Info & Wave Equalizer -->
-            <div class="flex items-center gap-2 px-1 text-xs text-white/80">
-              <span class="hidden sm:inline font-medium text-white/60">SIAMÉS</span>
-              <div class="flex items-end gap-0.5 h-3.5" :title="isAudioPaused ? 'Paused' : (isVideoMuted ? 'Muted' : 'Playing')">
-                <span class="w-0.5 rounded-full bg-[#00ffc7] transition-all duration-200" :class="!isAudioPaused && !isVideoMuted ? 'h-3 animate-pulse' : 'h-1 bg-white/30'" />
-                <span class="w-0.5 rounded-full bg-[#00ffc7] transition-all duration-200" :class="!isAudioPaused && !isVideoMuted ? 'h-4 animate-pulse [animation-delay:150ms]' : 'h-1.5 bg-white/30'" />
-                <span class="w-0.5 rounded-full bg-[#00ffc7] transition-all duration-200" :class="!isAudioPaused && !isVideoMuted ? 'h-2.5 animate-pulse [animation-delay:300ms]' : 'h-1 bg-white/30'" />
-              </div>
-            </div>
-
-            <!-- Mute / Unmute Button -->
-            <button
-              type="button"
-              class="no-anim-underline p-1.5 rounded-full hover:bg-white/20 active:scale-95 transition-all text-white/80 hover:text-white cursor-pointer ml-0.5"
-              :title="isVideoMuted ? 'Unmute audio' : 'Mute audio'"
-              @click="toggleMute"
-            >
-              <Icon
-                :name="isVideoMuted ? 'solar:volume-cross-bold' : 'solar:volume-loud-bold'"
-                class="text-base sm:text-lg"
-                :class="{ 'text-red-400': isVideoMuted, 'text-[#00ffc7]': !isVideoMuted && !isAudioPaused }"
-              />
-            </button>
-          </div>
+        <!-- Minimal Sound Toggle Button (Single Button for Play & Mute) -->
+        <div class="audio-toggle-wrapper absolute z-30 bottom-6 sm:bottom-10 right-6 sm:right-12">
+          <button
+            type="button"
+            class="no-anim-underline inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 hover:border-white bg-black/60 hover:bg-black/90 backdrop-blur-md text-white text-xs sm:text-sm font-medium tracking-wide transition-all duration-300 shadow-xl cursor-pointer active:scale-95 group"
+            :title="isPlaying ? 'Mute' : 'Play from start'"
+            @click="togglePlayMute"
+          >
+            <span class="relative flex h-2 w-2">
+              <span v-if="isPlaying" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
+              <span class="relative inline-flex rounded-full h-2 w-2" :class="isPlaying ? 'bg-white' : 'bg-white/40'" />
+            </span>
+            <Icon
+              :name="isPlaying ? 'solar:volume-loud-bold' : 'solar:volume-cross-bold'"
+              class="text-base transition-transform group-hover:scale-110"
+              :class="isPlaying ? 'text-white' : 'text-white/60'"
+            />
+            <span>{{ isPlaying ? 'Mute' : 'Play' }}</span>
+          </button>
         </div>
       </section>
 
@@ -154,59 +130,66 @@
   const block2Ref = useTemplateRef('block2Ref');
   const showreelRef = useTemplateRef('showreelRef');
   const buttonHypnoticRef = useTemplateRef('buttonHypnoticRef');
-  const isVideoMuted = ref(false); // Music unmuted by default
-  const isAudioPaused = ref(false); // Music playing by default
+  const isPlaying = ref(false);
+  const isUserMuted = ref(false);
 
-  const togglePlayPause = () => {
-    if (!showreelRef.value) return;
-    if (showreelRef.value.paused) {
-      showreelRef.value.play().then(() => {
-        isAudioPaused.value = false;
-      }).catch(() => {});
-    } else {
-      showreelRef.value.pause();
-      isAudioPaused.value = true;
+  const onVideoPlay = () => {
+    if (showreelRef.value && !showreelRef.value.muted) {
+      isPlaying.value = true;
     }
   };
 
-  const toggleMute = () => {
-    if (!showreelRef.value) return;
-    isVideoMuted.value = !isVideoMuted.value;
-    showreelRef.value.muted = isVideoMuted.value;
-  };
-
-  const onVideoPlay = () => {
-    isAudioPaused.value = false;
-  };
-
   const onVideoPause = () => {
-    isAudioPaused.value = true;
+    isPlaying.value = false;
   };
 
-  const tryPlayAudio = () => {
-    if (!showreelRef.value || isAudioPaused.value) return;
-    showreelRef.value.muted = isVideoMuted.value;
-    showreelRef.value.play().then(() => {
-      isAudioPaused.value = false;
-    }).catch(() => {
-      // Browser autoplay policy requires user interaction first: unlock on first gesture
-      const unlockAudio = () => {
-        if (showreelRef.value && !isAudioPaused.value) {
-          showreelRef.value.muted = isVideoMuted.value;
-          showreelRef.value.play().then(() => {
-            isAudioPaused.value = false;
-          }).catch(() => {});
-        }
-        window.removeEventListener('click', unlockAudio);
-        window.removeEventListener('scroll', unlockAudio);
-        window.removeEventListener('touchstart', unlockAudio);
-        window.removeEventListener('wheel', unlockAudio);
-      };
-      window.addEventListener('click', unlockAudio, { once: true });
-      window.addEventListener('scroll', unlockAudio, { once: true });
-      window.addEventListener('touchstart', unlockAudio, { once: true });
-      window.addEventListener('wheel', unlockAudio, { once: true });
-    });
+  const playFromStart = () => {
+    if (!showreelRef.value) return;
+    showreelRef.value.currentTime = 0;
+    if (!isUserMuted.value) {
+      showreelRef.value.muted = false;
+      showreelRef.value.play().then(() => {
+        isPlaying.value = true;
+      }).catch(() => {
+        // Autoplay policy: unlock on first gesture
+        const unlockAudio = () => {
+          if (showreelRef.value && !isUserMuted.value) {
+            showreelRef.value.muted = false;
+            showreelRef.value.play().then(() => {
+              isPlaying.value = true;
+            }).catch(() => {});
+          }
+          window.removeEventListener('click', unlockAudio);
+          window.removeEventListener('scroll', unlockAudio);
+          window.removeEventListener('touchstart', unlockAudio);
+          window.removeEventListener('wheel', unlockAudio);
+        };
+        window.addEventListener('click', unlockAudio, { once: true });
+        window.addEventListener('scroll', unlockAudio, { once: true });
+        window.addEventListener('touchstart', unlockAudio, { once: true });
+        window.addEventListener('wheel', unlockAudio, { once: true });
+      });
+    }
+  };
+
+  const togglePlayMute = () => {
+    if (!showreelRef.value) return;
+
+    if (isPlaying.value && !showreelRef.value.paused && !showreelRef.value.muted) {
+      // Currently playing: mute & pause
+      showreelRef.value.pause();
+      showreelRef.value.muted = true;
+      isPlaying.value = false;
+      isUserMuted.value = true;
+    } else {
+      // Currently muted or paused: play from start
+      isUserMuted.value = false;
+      showreelRef.value.currentTime = 0;
+      showreelRef.value.muted = false;
+      showreelRef.value.play().then(() => {
+        isPlaying.value = true;
+      }).catch(() => {});
+    }
   };
   let block1Split, block2Split, block3Split;
   let ctx;
@@ -366,7 +349,14 @@
           maskSize: '30% 30%',
           ease: 'power3.inOut',
           onStart: () => {
-            tryPlayAudio();
+            playFromStart();
+          },
+          onReverseComplete: () => {
+            if (showreelRef.value) {
+              showreelRef.value.pause();
+              showreelRef.value.currentTime = 0;
+              isPlaying.value = false;
+            }
           },
         }, '<')
         .to(showreelRef.value, {
@@ -398,6 +388,18 @@
         }, '<.8')
         .to(block2Ref.value, {
           autoAlpha: 0,
+          onStart: () => {
+            if (showreelRef.value) {
+              showreelRef.value.pause();
+              isPlaying.value = false;
+            }
+          },
+          onReverseComplete: () => {
+            if (showreelRef.value && !isUserMuted.value) {
+              showreelRef.value.play().catch(() => {});
+              isPlaying.value = true;
+            }
+          },
         })
         .to('.animation-circles', {
           scale: isPortrait ? 3 : 1.5,
