@@ -89,70 +89,90 @@ export const albums = [
   },
   {
     id: 2,
-    slug: 'velodrome',
-    title: 'Velodrome',
+    slug: 'apkcook',
+    title: 'APKCOOK',
     images: {
       cover: 'cover.png',
       back: 'back.png',
       galleta: 'galleta.png',
     },
-    year: 2013,
-    releaseDate: '2013-09-14',
-    recordLabel: 'Lemon Songs',
+    year: 2026,
+    releaseDate: '2026-01-01',
+    category: 'Android Security & Dynamic Instrumentation',
     meta: {
-      description: 'Velodrome is the fourth album recorded by Abin Binoy.',
+      description: 'APKCook is an open-source, unified Android application security auditing, reverse engineering, and dynamic instrumentation laboratory by Abin Binoy.',
     },
-    player: {
-      spotify: 'https://open.spotify.com/embed/album/55dCAnS0nH77fJFehhlNiZ',
-      bandcamp: {
-        id: 1275914599,
-        width: '100%',
-        height: '472px'
-      }
-    },
+    basicInfo: 'APKCook is a unified Android application security auditing and dynamic instrumentation laboratory. It combines static bytecode disassembly, automated regex vulnerability heuristics, automated Frida gadget injection, cryptographic multi-scheme APK signing, and a live ADB device command center into a fast, native desktop environment.',
+    howToUse: '# Clone repository\ngit clone https://github.com/BROHUHA/APKCook.git\ncd APKCook\n\n# Run the application (.NET 8 + Avalonia UI)\ndotnet run --project src/APKCook.Avalonia\n\n# Or publish standalone Windows binary\ndotnet publish src/APKCook.Avalonia -c Release -r win-x64 --self-contained -p:PublishSingleFile=true -o release',
+    player: null,
     social: [
-      // {
-      //   label: 'Spotify',
-      //   link: 'https://open.spotify.com/album/55dCAnS0nH77fJFehhlNiZ',
-      //   icon: 'simple-icons:spotify',
-      // },
       {
-        label: 'Bandcamp',
-        link: 'https://skizophonic.bandcamp.com/album/velodrome',
-        icon: 'simple-icons:bandcamp',
+        label: 'GitHub Repository',
+        link: 'https://github.com/BROHUHA/APKCook',
+        icon: 'simple-icons:github',
+      },
+      {
+        label: 'Direct Install (ZIP)',
+        link: 'https://github.com/BROHUHA/APKCook/archive/refs/heads/main.zip',
+        icon: 'lucide:download',
       },
     ],
     videos: {
-      youtube: [
-        {
-          id: 'gkLqopaEHpU',
-          title: 'Oh Oh Oh (Do Not Skip Any Detail)',
-        },
-        {
-          id: '6SJUCnURxx0',
-          title: 'Queen of Photoshop',
-        },
-        {
-          id: 'hWqCkjQP8G0',
-          title: 'Clockwork - Benicàssim.pop',
-        },
-      ],
+      youtube: [],
     },
     bgVideo: {
-      fhd: 'woman_dancing_1080p.mp4',
-      hd: 'woman_dancing_720p.mp4',
+      fhd: 'wave_1080p.mp4',
+      hd: 'wave_720p.mp4',
     },
     tracklist: [
-      'How Would You Say I Love You?',
-      'Clockwork',
-      '1 2 3 4, School Revolution!',
-      'No-Light Men',
-      'Love Soldier',
-      'Queen Of Photoshop',
-      'I Don’t Want To Be Cool',
-      'My Dark Addiction',
-      'Nadie Te Quiere Ya',
-      'Oh Oh Oh (Do Not Skip Any Detail)',
+      {
+        name: '.NET 8 & C# 12',
+        reason: 'Modern high-performance runtime delivering multi-threaded execution, memory safety, and cross-platform binary processing efficiency.',
+      },
+      {
+        name: 'Avalonia UI 11',
+        reason: 'Cross-platform XAML GUI framework providing hardware-accelerated, native desktop rendering without Electron memory overhead.',
+      },
+      {
+        name: 'Apktool Engine',
+        reason: 'Decodes binary XML resources, disassembles DEX bytecode into readable Smali opcodes, and rebuilds modified APK archives.',
+      },
+      {
+        name: 'Frida Dynamic Instrumentation',
+        reason: 'Automates gadget injection (frida-gadget.so) into native libraries for live runtime hooking, memory probing, and SSL pinning bypass.',
+      },
+      {
+        name: 'Uber-APK-Signer',
+        reason: 'Performs multi-scheme Android cryptographic signing supporting v1, v2, and v3 signature formats with automated zipalign verification.',
+      },
+      {
+        name: 'Android Debug Bridge (ADB)',
+        reason: 'Direct device communication bridge managing physical phones and emulators for package installs, live logcat streaming, and frame capture.',
+      },
+      {
+        name: 'Smali & Baksmali',
+        reason: 'Intermediate DEX disassembly format utilized to analyze register allocation, control-flow graphs, and method signatures during audits.',
+      },
+      {
+        name: 'ReactiveUI & MVVM',
+        reason: 'Architectural design pattern providing declarative state binding, asynchronous command dispatching, and reactive event streams.',
+      },
+      {
+        name: 'Heuristic Security Scanner',
+        reason: 'Configurable regex rule engine identifying hardcoded secrets, insecure cryptographic algorithms, root detection, and exposed endpoints.',
+      },
+      {
+        name: 'Zipalign Optimization',
+        reason: 'Ensures all uncompressed data starts with a 4-byte boundary alignment, optimizing memory mapping efficiency on Android OS.',
+      },
+      {
+        name: 'Java Development Kit (JDK 17+)',
+        reason: 'Underlying runtime environment utilized by Apktool, jarsigner, and APK signature verification utilities.',
+      },
+      {
+        name: 'Git & GitHub Version Control',
+        reason: 'Open-source repository management, CI/CD automated release builds, cross-architecture testing, and documentation tracking.',
+      },
     ],
   },
   {

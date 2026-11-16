@@ -118,12 +118,13 @@
   });
 
   const config = useRuntimeConfig()
-  const slug = useRoute().params.slug
+  const routeSlug = useRoute().params.slug
+  const slug = routeSlug === 'velodrome' ? 'apkcook' : routeSlug
   const { data: post } = await useAsyncData(slug, () => {
     return queryCollection('music').path(`/en/music/${slug}`).first()
   })
 
-  const content = albums.find(album => album.slug === slug)
+  const content = albums.find(album => album.slug === slug) || albums[0]
   const contentRef = ref(null)
   const currentActiveSectionId = ref('#music')
   const activeToolIndex = ref(null)

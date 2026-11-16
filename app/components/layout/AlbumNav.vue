@@ -34,10 +34,11 @@
   };
 
   const handleShare = async () => {
-    const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://github.com/BROHUHA/BT-Scanner';
+    const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://github.com/BROHUHA';
+    const pageTitle = typeof document !== 'undefined' ? document.title : 'Abin Binoy Portfolio';
     const shareData = {
-      title: 'BT SCANNER — Abin Binoy',
-      text: 'Check out BT SCANNER: Deep Learning Brain Tumor MRI Scanner by Abin Binoy',
+      title: pageTitle,
+      text: `Check out ${pageTitle}`,
       url: shareUrl,
     };
 
