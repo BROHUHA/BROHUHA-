@@ -1,6 +1,44 @@
 <template>
   <div ref="homeTimelineRef">
-    <PreloaderFull v-if="!isPageLoaded" target=".timeline" text1="loading waves" text2="syncing spiral" @done="isPageLoaded = true" />
+    <PreloaderFull v-if="!isPageLoaded" target=".timeline" text1="loading waves" text2="syncing spiral" @done="isPageLoaded = true; startMusic()" />
+
+    <!-- Global Background Audio (SIAMÉS - The Wolf) -->
+    <audio
+      ref="audioRef"
+      src="/audio/the_wolf.mp3"
+      loop
+      preload="auto"
+      playsinline
+    />
+
+    <!-- Minimal Floating Audio Control (Icon Only + Wave Click Animation) -->
+    <div class="fixed z-50 bottom-5 right-5 sm:bottom-8 sm:right-8">
+      <button
+        type="button"
+        class="no-anim-underline relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-black/75 hover:bg-black/90 active:scale-80 transition-all duration-300 border border-white/20 hover:border-white/60 backdrop-blur-md shadow-2xl cursor-pointer select-none group"
+        :title="isMuted ? 'Play music' : 'Mute music'"
+        :aria-label="isMuted ? 'Play music' : 'Mute music'"
+        @click="handleToggleMute"
+      >
+        <!-- Matching Hypnotic Ripple Wave Animation on Click -->
+        <span
+          v-if="isRippling"
+          class="absolute inset-0 rounded-full border-2 border-white/70 animate-ping pointer-events-none"
+        />
+        <!-- Ambient Sound Ring when Music is Active -->
+        <span
+          v-if="!isMuted"
+          class="absolute -inset-1 rounded-full border border-white/20 animate-pulse pointer-events-none"
+        />
+
+        <!-- Pure Minimal Icon -->
+        <Icon
+          :name="isMuted ? 'solar:volume-cross-bold' : 'solar:volume-loud-bold'"
+          class="text-xl sm:text-2xl transition-all duration-300 group-hover:scale-110"
+          :class="isMuted ? 'text-white/40' : 'text-white'"
+        />
+      </button>
+    </div>
 
     <div ref="timelineRef" class="timeline relative z-10 top-0 left-0 w-screen min-h-lvh">
       <h1 class="sr-only">Home</h1>
@@ -45,27 +83,6 @@
         </div>
         <div class="container py-12 lg:py-40 text-[clamp(1.5rem,_3.5vw,_3.5rem)] text-white text-pretty">
           <p class="relative z-20">Driven by my curiosity and passion for technology, I constantly explore emerging innovations, experiment with creative ideas, and build meaningful digital experiences that combine functionality, creativity, and modern design.</p>
-        </div>
-
-        <!-- Minimal Sound Toggle Button (Single Button for Play & Mute) -->
-        <div class="audio-toggle-wrapper absolute z-30 bottom-6 sm:bottom-10 right-6 sm:right-12">
-          <button
-            type="button"
-            class="no-anim-underline inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 hover:border-white bg-black/60 hover:bg-black/90 backdrop-blur-md text-white text-xs sm:text-sm font-medium tracking-wide transition-all duration-300 shadow-xl cursor-pointer active:scale-95 group"
-            :title="isPlaying ? 'Mute' : 'Play from start'"
-            @click="togglePlayMute"
-          >
-            <span class="relative flex h-2 w-2">
-              <span v-if="isPlaying" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
-              <span class="relative inline-flex rounded-full h-2 w-2" :class="isPlaying ? 'bg-white' : 'bg-white/40'" />
-            </span>
-            <Icon
-              :name="isPlaying ? 'solar:volume-loud-bold' : 'solar:volume-cross-bold'"
-              class="text-base transition-transform group-hover:scale-110"
-              :class="isPlaying ? 'text-white' : 'text-white/60'"
-            />
-            <span>{{ isPlaying ? 'Mute' : 'Play' }}</span>
-          </button>
         </div>
       </section>
 
@@ -130,67 +147,70 @@
   const block2Ref = useTemplateRef('block2Ref');
   const showreelRef = useTemplateRef('showreelRef');
   const buttonHypnoticRef = useTemplateRef('buttonHypnoticRef');
-  const isPlaying = ref(false);
-  const isUserMuted = ref(false);
+  const audioRef = useTemplateRef('audioRef');
+  const isMuted = ref(false);
+  const isRippling = ref(false);
 
-  const onVideoPlay = () => {
-    if (showreelRef.value && !showreelRef.value.muted) {
-      isPlaying.value = true;
-    }
+  const triggerRipple = () => {
+    isRippling.value = true;
+    setTimeout(() => {
+      isRippling.value = false;
+    }, 600);
   };
 
-  const onVideoPause = () => {
-    isPlaying.value = false;
-  };
-
-  const playFromStart = () => {
-    if (!showreelRef.value) return;
-    showreelRef.value.currentTime = 0;
-    if (!isUserMuted.value) {
-      showreelRef.value.muted = false;
-      showreelRef.value.play().then(() => {
-        isPlaying.value = true;
+  const startMusic = () => {
+    if (!audioRef.value) return;
+    audioRef.value.currentTime = 0;
+    audioRef.value.muted = false;
+    const playPromise = audioRef.value.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        isMuted.value = false;
       }).catch(() => {
-        // Autoplay policy: unlock on first gesture
+        // Autoplay blocked on mobile - unlock on first user gesture anywhere
+        isMuted.value = true;
         const unlockAudio = () => {
-          if (showreelRef.value && !isUserMuted.value) {
-            showreelRef.value.muted = false;
-            showreelRef.value.play().then(() => {
-              isPlaying.value = true;
+          if (audioRef.value) {
+            audioRef.value.muted = false;
+            audioRef.value.play().then(() => {
+              isMuted.value = false;
             }).catch(() => {});
           }
-          window.removeEventListener('click', unlockAudio);
-          window.removeEventListener('scroll', unlockAudio);
-          window.removeEventListener('touchstart', unlockAudio);
-          window.removeEventListener('wheel', unlockAudio);
+          ['click', 'touchstart', 'touchend', 'scroll', 'keydown'].forEach(evt => {
+            window.removeEventListener(evt, unlockAudio);
+          });
         };
-        window.addEventListener('click', unlockAudio, { once: true });
-        window.addEventListener('scroll', unlockAudio, { once: true });
-        window.addEventListener('touchstart', unlockAudio, { once: true });
-        window.addEventListener('wheel', unlockAudio, { once: true });
+        ['click', 'touchstart', 'touchend', 'scroll', 'keydown'].forEach(evt => {
+          window.addEventListener(evt, unlockAudio, { passive: true, once: true });
+        });
       });
     }
   };
 
-  const togglePlayMute = () => {
-    if (!showreelRef.value) return;
+  const handleToggleMute = () => {
+    triggerRipple();
+    if (!audioRef.value) return;
 
-    if (isPlaying.value && !showreelRef.value.paused && !showreelRef.value.muted) {
-      // Currently playing: mute & pause
-      showreelRef.value.pause();
-      showreelRef.value.muted = true;
-      isPlaying.value = false;
-      isUserMuted.value = true;
+    if (isMuted.value || audioRef.value.paused) {
+      audioRef.value.muted = false;
+      if (audioRef.value.paused) {
+        audioRef.value.play().then(() => {
+          isMuted.value = false;
+        }).catch(() => {});
+      } else {
+        isMuted.value = false;
+      }
     } else {
-      // Currently muted or paused: play from start
-      isUserMuted.value = false;
-      showreelRef.value.currentTime = 0;
-      showreelRef.value.muted = false;
-      showreelRef.value.play().then(() => {
-        isPlaying.value = true;
-      }).catch(() => {});
+      audioRef.value.muted = true;
+      isMuted.value = true;
     }
   };
+
+  onBeforeUnmount(() => {
+    if (audioRef.value) {
+      audioRef.value.pause();
+    }
+  });
   let block1Split, block2Split, block3Split;
   let ctx;
 
@@ -349,13 +369,16 @@
           maskSize: '30% 30%',
           ease: 'power3.inOut',
           onStart: () => {
-            playFromStart();
+            if (showreelRef.value) {
+              if (audioRef.value && !audioRef.value.paused) {
+                showreelRef.value.currentTime = audioRef.value.currentTime % (showreelRef.value.duration || 1);
+              }
+              showreelRef.value.play().catch(() => {});
+            }
           },
           onReverseComplete: () => {
             if (showreelRef.value) {
               showreelRef.value.pause();
-              showreelRef.value.currentTime = 0;
-              isPlaying.value = false;
             }
           },
         }, '<')
@@ -391,13 +414,14 @@
           onStart: () => {
             if (showreelRef.value) {
               showreelRef.value.pause();
-              isPlaying.value = false;
             }
           },
           onReverseComplete: () => {
-            if (showreelRef.value && !isUserMuted.value) {
+            if (showreelRef.value) {
+              if (audioRef.value && !audioRef.value.paused) {
+                showreelRef.value.currentTime = audioRef.value.currentTime % (showreelRef.value.duration || 1);
+              }
               showreelRef.value.play().catch(() => {});
-              isPlaying.value = true;
             }
           },
         })
