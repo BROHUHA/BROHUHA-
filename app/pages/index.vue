@@ -35,6 +35,8 @@
             loop
             playsinline
             disableremoteplayback
+            @play="onVideoPlay"
+            @pause="onVideoPause"
           >
             <source src="/videos/the_wolf_1080p.mp4" type="video/mp4" media="(min-width: 1920px)">
             <source src="/videos/the_wolf_720p.mp4" type="video/mp4" media="(min-width: 1280px)">
@@ -46,17 +48,48 @@
           <p class="relative z-20">Driven by my curiosity and passion for technology, I constantly explore emerging innovations, experiment with creative ideas, and build meaningful digital experiences that combine functionality, creativity, and modern design.</p>
         </div>
 
-        <!-- Song / Audio Toggle Button -->
-        <div class="audio-toggle-wrapper absolute z-30 bottom-6 sm:bottom-10 right-6 sm:right-12">
-          <button
-            type="button"
-            class="no-anim-underline inline-flex items-center gap-2.5 px-4 sm:px-5 py-2.5 rounded-full border border-white/30 hover:border-white bg-black/60 hover:bg-black/90 backdrop-blur-md text-white transition-all duration-300 shadow-2xl cursor-pointer active:scale-95 text-xs sm:text-sm font-bold tracking-wide group"
-            :title="isVideoMuted ? 'Enable song audio (SIAMÉS - The Wolf)' : 'Mute audio'"
-            @click="toggleAudio"
-          >
-            <Icon :name="isVideoMuted ? 'solar:volume-cross-bold' : 'solar:volume-loud-bold'" class="text-lg transition-transform group-hover:scale-110" :class="{ 'text-[#00ffc7] animate-pulse': !isVideoMuted }" />
-            <span>{{ isVideoMuted ? 'Enable Music' : 'Music Playing' }}</span>
-          </button>
+        <!-- Song / Music Controller Floating Pill -->
+        <div class="audio-toggle-wrapper absolute z-30 bottom-6 sm:bottom-10 right-4 sm:right-12">
+          <div class="inline-flex items-center gap-1.5 sm:gap-2.5 p-1.5 sm:p-2 pr-3 sm:pr-4 rounded-full border border-white/20 hover:border-white/40 bg-black/70 hover:bg-black/85 backdrop-blur-md text-white transition-all duration-300 shadow-2xl select-none">
+            <!-- Play / Pause Action Button -->
+            <button
+              type="button"
+              class="no-anim-underline inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 hover:bg-white/25 active:scale-95 transition-all text-white cursor-pointer text-xs sm:text-sm font-semibold tracking-wide group"
+              :title="isAudioPaused ? 'Play music' : 'Pause music'"
+              @click="togglePlayPause"
+            >
+              <Icon
+                :name="isAudioPaused ? 'solar:play-bold' : 'solar:pause-bold'"
+                class="text-base sm:text-lg transition-transform group-hover:scale-110"
+                :class="{ 'text-[#00ffc7]': !isAudioPaused }"
+              />
+              <span>{{ isAudioPaused ? 'Play' : 'Pause' }}</span>
+            </button>
+
+            <!-- Song Info & Wave Equalizer -->
+            <div class="flex items-center gap-2 px-1 text-xs text-white/80">
+              <span class="hidden sm:inline font-medium text-white/60">SIAMÉS</span>
+              <div class="flex items-end gap-0.5 h-3.5" :title="isAudioPaused ? 'Paused' : (isVideoMuted ? 'Muted' : 'Playing')">
+                <span class="w-0.5 rounded-full bg-[#00ffc7] transition-all duration-200" :class="!isAudioPaused && !isVideoMuted ? 'h-3 animate-pulse' : 'h-1 bg-white/30'" />
+                <span class="w-0.5 rounded-full bg-[#00ffc7] transition-all duration-200" :class="!isAudioPaused && !isVideoMuted ? 'h-4 animate-pulse [animation-delay:150ms]' : 'h-1.5 bg-white/30'" />
+                <span class="w-0.5 rounded-full bg-[#00ffc7] transition-all duration-200" :class="!isAudioPaused && !isVideoMuted ? 'h-2.5 animate-pulse [animation-delay:300ms]' : 'h-1 bg-white/30'" />
+              </div>
+            </div>
+
+            <!-- Mute / Unmute Button -->
+            <button
+              type="button"
+              class="no-anim-underline p-1.5 rounded-full hover:bg-white/20 active:scale-95 transition-all text-white/80 hover:text-white cursor-pointer ml-0.5"
+              :title="isVideoMuted ? 'Unmute audio' : 'Mute audio'"
+              @click="toggleMute"
+            >
+              <Icon
+                :name="isVideoMuted ? 'solar:volume-cross-bold' : 'solar:volume-loud-bold'"
+                class="text-base sm:text-lg"
+                :class="{ 'text-red-400': isVideoMuted, 'text-[#00ffc7]': !isVideoMuted && !isAudioPaused }"
+              />
+            </button>
+          </div>
         </div>
       </section>
 
@@ -121,26 +154,48 @@
   const block2Ref = useTemplateRef('block2Ref');
   const showreelRef = useTemplateRef('showreelRef');
   const buttonHypnoticRef = useTemplateRef('buttonHypnoticRef');
-  const isVideoMuted = ref(false); // Music enabled by default
+  const isVideoMuted = ref(false); // Music unmuted by default
+  const isAudioPaused = ref(false); // Music playing by default
 
-  const toggleAudio = () => {
+  const togglePlayPause = () => {
     if (!showreelRef.value) return;
-    isVideoMuted.value = !isVideoMuted.value;
-    showreelRef.value.muted = isVideoMuted.value;
-    if (!isVideoMuted.value) {
-      showreelRef.value.play().catch(() => {});
+    if (showreelRef.value.paused) {
+      showreelRef.value.play().then(() => {
+        isAudioPaused.value = false;
+      }).catch(() => {});
+    } else {
+      showreelRef.value.pause();
+      isAudioPaused.value = true;
     }
   };
 
+  const toggleMute = () => {
+    if (!showreelRef.value) return;
+    isVideoMuted.value = !isVideoMuted.value;
+    showreelRef.value.muted = isVideoMuted.value;
+  };
+
+  const onVideoPlay = () => {
+    isAudioPaused.value = false;
+  };
+
+  const onVideoPause = () => {
+    isAudioPaused.value = true;
+  };
+
   const tryPlayAudio = () => {
-    if (!showreelRef.value || isVideoMuted.value) return;
-    showreelRef.value.muted = false;
-    showreelRef.value.play().catch(() => {
+    if (!showreelRef.value || isAudioPaused.value) return;
+    showreelRef.value.muted = isVideoMuted.value;
+    showreelRef.value.play().then(() => {
+      isAudioPaused.value = false;
+    }).catch(() => {
       // Browser autoplay policy requires user interaction first: unlock on first gesture
       const unlockAudio = () => {
-        if (showreelRef.value && !isVideoMuted.value) {
-          showreelRef.value.muted = false;
-          showreelRef.value.play().catch(() => {});
+        if (showreelRef.value && !isAudioPaused.value) {
+          showreelRef.value.muted = isVideoMuted.value;
+          showreelRef.value.play().then(() => {
+            isAudioPaused.value = false;
+          }).catch(() => {});
         }
         window.removeEventListener('click', unlockAudio);
         window.removeEventListener('scroll', unlockAudio);
