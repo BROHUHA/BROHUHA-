@@ -6,10 +6,10 @@
       </button>
     </div>
 
-    <div ref="navWrapperRef" class="nav-wrapper fixed top-0 right-0 z-95 flex flex-col justify-center items-center w-full h-lvh bg-black text-white text-5xl sm:text-7xl text-center transition-all duration-500 ease-in-out" :class="isOpen ? 'open' : 'pointer-events-none'">
+    <div ref="navWrapperRef" class="nav-wrapper fixed top-0 right-0 z-95 flex flex-col justify-center items-center w-full h-lvh bg-black text-white text-4xl sm:text-6xl md:text-7xl text-center transition-all duration-500 ease-in-out" :class="isOpen ? 'open' : 'pointer-events-none'">
       <AnimationGlitch v-if="isOpen" class="absolute z-10 inset-0 h-screen" />
       <nav class="main-navigation" aria-label="Main navigation">
-        <ul class="relative z-90 flex flex-col gap-4 p-12 uppercase" @click="isOpen = false">
+        <ul class="relative z-90 flex flex-col gap-3 sm:gap-4 p-8 sm:p-12 uppercase" @click="isOpen = false">
           <li>
             <AnimationTextShadow>
               <NuxtLink to="/">Home</NuxtLink>
@@ -28,6 +28,11 @@
           <li>
             <AnimationTextShadow>
               <NuxtLink to="/tools">Tools</NuxtLink>
+            </AnimationTextShadow>
+          </li>
+          <li>
+            <AnimationTextShadow>
+              <NuxtLink to="/contact">Contact</NuxtLink>
             </AnimationTextShadow>
           </li>
         </ul>

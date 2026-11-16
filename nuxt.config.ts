@@ -196,8 +196,14 @@ export default defineNuxtConfig({
     },
   },
   runtimeConfig: {
+    web3formsAccessKey: process.env.WEB3FORMS_ACCESS_KEY || '358a7427-79e7-4aaa-80ab-98be68b368f1',
     public: {
-      appUrl: process.env.APP_URL || 'https://4bin.vercel.app'
+      appUrl: process.env.APP_URL || 'https://4bin.vercel.app',
+      emailjs: {
+        serviceId: process.env.EMAILJS_SERVICE_ID || '',
+        templateId: process.env.EMAILJS_TEMPLATE_ID || '',
+        publicKey: process.env.EMAILJS_PUBLIC_KEY || '',
+      }
     }
   }
 })
