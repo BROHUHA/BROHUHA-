@@ -48,7 +48,7 @@
               Looking for a dedicated Full-Stack Developer for your next project, architecture consulting, or full-time engineering roles? Open the collaboration sheet to send a direct message.
             </p>
           </div>
-          <div class="mt-6 pt-4 border-t border-neutral-800 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          <div class="mt-6 pt-4 border-t border-neutral-800 flex items-center justify-start">
             <button
               type="button"
               class="inline-flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-white text-black font-bold text-xs uppercase tracking-wider hover:bg-neutral-200 transition-all cursor-pointer shadow-md active:scale-95"
@@ -57,7 +57,6 @@
               <span>Open Collaboration Sheet</span>
               <Icon name="solar:chat-round-line-bold" class="text-base" />
             </button>
-            <span class="text-xs text-neutral-400 font-mono text-center sm:text-right">Powered by EmailJS</span>
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@ export const repository = [
     id: 3,
     name: 'ALLQR',
     image: 'repo_3_allqr.png',
-    url: 'https://allre.vercel.app',
+    url: 'https://allqr.vercel.app',
   },
   {
     id: 4,
@@ -147,8 +147,8 @@ export const getInsightBySlug = (slug) => {
   const normalized = slug.toLowerCase().trim();
   return allInsights.find(
     item => item.slug.toLowerCase() === normalized ||
-            item.name.toLowerCase() === normalized ||
-            item.slug.replace(/-/g, ' ') === normalized ||
-            item.id.toString() === normalized
+      item.name.toLowerCase() === normalized ||
+      item.slug.replace(/-/g, ' ') === normalized ||
+      item.id.toString() === normalized
   );
 };

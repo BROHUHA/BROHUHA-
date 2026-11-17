@@ -1,8 +1,17 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@font-face {
+  font-family: "Grindy Brush";
+  src: url("/fonts/grindy-brush/grindy-brush.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --font-sans: "Poppins", "sans-serif";
+  --font-brush: "Grindy Brush", cursive, sans-serif;
 
   --color-primary: #ff0047;
   --color-secondary: #00ffc7;
@@ -188,4 +197,37 @@ html.lenis body {
   transition-property: overflow;
   transition-duration: 1ms;
   transition-behavior: allow-discrete;
+}
+
+/* Global Print Stylesheet */
+@media print {
+  html,
+  body {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: #111111 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .overflow-x-hidden,
+  main,
+  #__nuxt,
+  body > div {
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  header,
+  footer,
+  .cursor-custom,
+  .button-nav-icon-wrapper,
+  .page-transition-overlay,
+  #app-preloader {
+    display: none !important;
+  }
 }
