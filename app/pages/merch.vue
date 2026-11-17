@@ -13,9 +13,9 @@
     </aside>
 
     <section class="merch-list flex flex-col gap-18 md:gap-28 w-[80%]">
-      <article id="tshirts">
-        <h2 class="sr-only">T-shirts</h2>
-        <MerchItem :items="tshirts" />
+      <article id="repository">
+        <h2 class="sr-only">Repository</h2>
+        <MerchItem :items="repository" />
       </article>
       <article id="badges">
         <h2 class="sr-only">Button badges</h2>
@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-  import { tshirts, badges, stickers, posters } from "~/data/merch";
+  import { repository, badges, stickers, posters } from "~/data/merch";
   import { pageTransitionConfig } from '~/helpers/transitionConfig';
 
   import gsap from "gsap";
@@ -60,7 +60,7 @@
   })
 
   const filterSections = [
-    { label: 'T-shirts', key: 'tshirts' },
+    { label: 'Repository', key: 'repository' },
     { label: 'Button badges', key: 'badges' },
     { label: 'Stickers', key: 'stickers' },
     { label: 'Posters', key: 'posters' },

@@ -1,108 +1,98 @@
-export const tshirts = [
+export const repository = [
   {
     id: 1,
-    name: 'Abin Binoy',
-    image: 'tshirt_skizophonic.png',
-    stock: 0,
+    name: 'Cabix',
+    image: 'repo_1_cabix.png',
   },
   {
     id: 2,
-    name: 'Sound',
-    image: 'tshirt_sound.png',
-    stock: 0,
+    name: 'Iceberg',
+    image: 'repo_2_iceberg.png',
   },
   {
     id: 3,
-    name: 'Flowers',
-    image: 'tshirt_flowers.png',
+    name: 'ALLQR',
+    image: 'repo_3_allqr.png',
   },
   {
     id: 4,
-    name: 'Retro',
-    image: 'tshirt_retro.png',
+    name: 'YZ Music',
+    image: 'repo_4_yz_music.png',
   },
   {
     id: 5,
-    name: 'Heads - blue',
-    image: 'tshirt_heads_blue.png',
+    name: 'APKCook',
+    image: 'repo_5_apkcook.png',
   },
   {
     id: 6,
-    name: 'Heads - pink',
-    image: 'tshirt_heads_pink.png',
+    name: 'Head',
+    image: 'repo_6_head.png',
   },
-  // {
-  //   id: 7,
-  //   name: 'Sound colours',
-  //   image: 'tshirt_sound_colours.png',
-  // },
-]
+];
+
+export const tshirts = repository;
 
 export const badges = [
   {
     id: 1,
-    name: 'Abin Binoy',
-    image: 'badge_skizophonic.png',
-  }
-]
+    name: 'AB Logo',
+    image: 'badge_1_ab_logo.png',
+  },
+  {
+    id: 2,
+    name: 'AB Monogram',
+    image: 'badge_2_ab_png.png',
+  },
+];
 
 export const stickers = [
   {
     id: 1,
-    name: 'Subliminal',
-    image: 'sticker_subliminal.jpg',
+    name: '4BIN Website',
+    image: 'sticker_1.png',
   },
   {
     id: 2,
-    name: 'Retrogame',
-    image: 'sticker_retrogame.png',
+    name: 'Think Bigger Build Better',
+    image: 'sticker_2.png',
   },
   {
     id: 3,
-    name: 'Novio caballo',
-    image: 'sticker_novio_caballo.jpg',
+    name: 'No Shortcut to Great Code',
+    image: 'sticker_3.png',
   },
   {
     id: 4,
-    name: 'Psychedelic',
-    image: 'sticker_psychedelic.jpg',
+    name: '4BIN Projects',
+    image: 'sticker_4.png',
   },
   {
     id: 5,
-    name: 'Velodrome',
-    image: 'sticker_velodrome.jpg',
+    name: 'Creative Freedom',
+    image: 'sticker_5.png',
   },
   {
     id: 6,
-    name: 'No-light men',
-    image: 'sticker_nolightmen.jpg',
+    name: 'BROHUHA Retro Arcade',
+    image: 'sticker_6.png',
   },
   {
     id: 7,
-    name: 'Star',
-    image: 'sticker_star.jpg',
+    name: 'Dream Bigger Build Better',
+    image: 'sticker_7.png',
   },
-]
+];
 
 export const posters = [
   {
     id: 1,
-    name: 'Black & white',
-    image: 'poster_skizophonic_black_white.jpg',
+    name: 'Abin Binoy (Monochrome)',
+    image: 'poster_1.png',
   },
   {
     id: 2,
-    name: 'Velodrome',
-    image: 'poster_velodrome_disc.jpg',
+    name: 'Full Stack Developer',
+    image: 'poster_2.png',
   },
-  // {
-  //   id: 3,
-  //   name: 'Shapes',
-  //   image: 'poster_shapes.jpg',
-  // },
-  // {
-  //   id: 4,
-  //   name: 'Benicàssim.pop',
-  //   image: 'poster_benicassim_pop_octubre2013.jpg',
-  // },
-]
+];
