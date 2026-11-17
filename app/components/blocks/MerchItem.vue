@@ -1,23 +1,149 @@
 <template>
   <div class="merch-items grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-18">
-    <div v-for="item in items" :key="item.id" class="merch-item flex flex-col items-center justify-end">
+    <div
+      v-for="item in items"
+      :key="item.id"
+      class="merch-item flex flex-col items-center justify-end"
+      @mouseenter="handleMouseEnter(item.id)"
+      @mouseleave="handleMouseLeave(item.id)"
+    >
       <AnimationReveal class="w-full" @start="isAnimationRevealStarted = true">
-        <div class="item relative overflow-hiddenx">
+        <a
+          v-if="item.url"
+          :href="item.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="item relative overflow-hiddenx block no-underline no-anim-underline group cursor-pointer"
+        >
           <div class="mask relative z-30 transition-all duration-400 ease-in-out rounded-xl">
-            <img class="item-img w-full h-auto object-cover cursor-crosshair rounded-xl will-change-[filter]" loading="lazy" :src="`/images/merch/${item.image}`" :alt="`Merch item - ${item.name}`" />
+            <img
+              class="item-img w-full h-auto object-cover cursor-crosshair rounded-xl will-change-[filter]"
+              loading="lazy"
+              :src="`/images/merch/${item.image}`"
+              :alt="`Merch item - ${item.name}`"
+            />
           </div>
-          <video ref="videoRef" class="item-bg-video absolute z-20 inset-0 w-full h-full object-cover transition-all duration-500 [clip-path:circle(46%_at_50%_50%)] mix-blend-darken" preload="auto" autoplay muted loop playsinline disableremoteplayback aria-hidden="true">
-            <!-- <source src="/videos/spiral2_large.mp4" type="video/mp4" media="(min-width: 1920px)"> -->
+          <video
+            :ref="el => setVideoRef(el, item.id)"
+            class="item-bg-video absolute z-20 inset-0 w-full h-full object-cover transition-all duration-500 [clip-path:circle(46%_at_50%_50%)] mix-blend-darken pointer-events-none"
+            preload="none"
+            muted
+            loop
+            playsinline
+            disableremoteplayback
+            aria-hidden="true"
+          >
+            <source src="/videos/spiral2_medium.mp4" type="video/mp4" media="(min-width: 1280px)">
+            <source src="/videos/spiral2_small.mp4" type="video/mp4">
+          </video>
+        </a>
+        <NuxtLink
+          v-else-if="item.slug"
+          :to="`/insights/${item.slug}`"
+          class="item relative overflow-hiddenx block no-underline no-anim-underline group cursor-pointer"
+        >
+          <div class="mask relative z-30 transition-all duration-400 ease-in-out rounded-xl">
+            <img
+              class="item-img w-full h-auto object-cover cursor-crosshair rounded-xl will-change-[filter]"
+              loading="lazy"
+              :src="`/images/merch/${item.image}`"
+              :alt="`Merch item - ${item.name}`"
+            />
+          </div>
+          <video
+            :ref="el => setVideoRef(el, item.id)"
+            class="item-bg-video absolute z-20 inset-0 w-full h-full object-cover transition-all duration-500 [clip-path:circle(46%_at_50%_50%)] mix-blend-darken pointer-events-none"
+            preload="none"
+            muted
+            loop
+            playsinline
+            disableremoteplayback
+            aria-hidden="true"
+          >
+            <source src="/videos/spiral2_medium.mp4" type="video/mp4" media="(min-width: 1280px)">
+            <source src="/videos/spiral2_small.mp4" type="video/mp4">
+          </video>
+        </NuxtLink>
+        <div
+          v-else
+          class="item relative overflow-hiddenx block no-underline no-anim-underline group"
+        >
+          <div class="mask relative z-30 transition-all duration-400 ease-in-out rounded-xl">
+            <img
+              class="item-img w-full h-auto object-cover cursor-crosshair rounded-xl will-change-[filter]"
+              loading="lazy"
+              :src="`/images/merch/${item.image}`"
+              :alt="`Merch item - ${item.name}`"
+            />
+          </div>
+          <video
+            :ref="el => setVideoRef(el, item.id)"
+            class="item-bg-video absolute z-20 inset-0 w-full h-full object-cover transition-all duration-500 [clip-path:circle(46%_at_50%_50%)] mix-blend-darken pointer-events-none"
+            preload="none"
+            muted
+            loop
+            playsinline
+            disableremoteplayback
+            aria-hidden="true"
+          >
             <source src="/videos/spiral2_medium.mp4" type="video/mp4" media="(min-width: 1280px)">
             <source src="/videos/spiral2_small.mp4" type="video/mp4">
           </video>
         </div>
       </AnimationReveal>
       <AnimationReveal>
-        <h3 class="mt-3 will-change-[filter, text-shadow]">{{ item.name }}</h3>
+        <a
+          v-if="item.url"
+          :href="item.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block text-center no-underline no-anim-underline"
+        >
+          <h3 class="mt-3 will-change-[filter, text-shadow] transition-colors hover:text-black cursor-pointer">{{ item.name }}</h3>
+        </a>
+        <NuxtLink
+          v-else-if="item.slug"
+          :to="`/insights/${item.slug}`"
+          class="block text-center no-underline no-anim-underline"
+        >
+          <h3 class="mt-3 will-change-[filter, text-shadow] transition-colors hover:text-black cursor-pointer">{{ item.name }}</h3>
+        </NuxtLink>
+        <div
+          v-else
+          class="block text-center no-underline no-anim-underline"
+        >
+          <h3 class="mt-3 will-change-[filter, text-shadow] transition-colors">{{ item.name }}</h3>
+        </div>
       </AnimationReveal>
       <AnimationReveal>
-        <span class="block text-gray-500 will-change-[filter, text-shadow]">Not available</span>
+        <a
+          v-if="item.url"
+          :href="item.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="no-underline no-anim-underline"
+        >
+          <span class="block will-change-[filter, text-shadow] transition-colors text-black font-semibold cursor-pointer hover:underline">
+            Visit Project ↗
+          </span>
+        </a>
+        <NuxtLink
+          v-else-if="item.slug"
+          :to="`/insights/${item.slug}`"
+          class="no-underline no-anim-underline"
+        >
+          <span class="block will-change-[filter, text-shadow] transition-colors text-black font-semibold cursor-pointer hover:underline">
+            View Artwork ↗
+          </span>
+        </NuxtLink>
+        <div
+          v-else
+          class="no-underline no-anim-underline"
+        >
+          <span class="block will-change-[filter, text-shadow] transition-colors text-gray-500">
+            Not available
+          </span>
+        </div>
       </AnimationReveal>
     </div>
   </div>
@@ -37,6 +163,29 @@
   })
 
   const isAnimationRevealStarted = ref(false);
+  const videoRefs = new Map();
+
+  const setVideoRef = (el, id) => {
+    if (el) {
+      videoRefs.set(id, el);
+    } else {
+      videoRefs.delete(id);
+    }
+  };
+
+  const handleMouseEnter = (id) => {
+    const video = videoRefs.get(id);
+    if (video) {
+      video.play().catch(() => {});
+    }
+  };
+
+  const handleMouseLeave = (id) => {
+    const video = videoRefs.get(id);
+    if (video) {
+      video.pause();
+    }
+  };
 
   watch(
     isAnimationRevealStarted,
@@ -49,6 +198,19 @@
 </script>
 
 <style scoped>
+  .item,
+  .item::before,
+  .item::after {
+    text-decoration: none !important;
+    border: none !important;
+  }
+
+  .item::before,
+  .item::after {
+    display: none !important;
+    content: none !important;
+  }
+
   .item:hover .mask {
     transform: scale(1.04);
   }

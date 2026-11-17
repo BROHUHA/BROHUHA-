@@ -1,6 +1,6 @@
 <template>
   <section ref="merchRef" class="container relative flex gap-16 justify-end pt-[60px]">
-    <h1 class="sr-only">Tools</h1>
+    <h1 class="sr-only">Insights</h1>
 
     <aside ref="filterRef" class="merch-filter-wrapper fixed top-16 left-4 lg:top-20 lg:left-20 md:block" aria-label="Merch filter options" role="complementary">
       <nav aria-label="Merch filter navigation">
@@ -45,15 +45,15 @@
   gsap.registerPlugin(SplitText, ScrollTrigger, ScrollToPlugin);
 
   definePageMeta({
-    alias: '/tools',
+    alias: ['/insights', '/publications', '/tools'],
     pageTransition: pageTransitionConfig,
   });
 
   useSeoMeta({
-    title: 'Developer Tools & Stack | 4bin - Abin Binoy (BROHUHA)',
-    description: 'Tools, technologies, and hardware utilized by 4bin (Abin Binoy / BROHUHA).',
-    ogTitle: 'Developer Tools & Stack | 4bin - Abin Binoy (BROHUHA)',
-    ogDescription: 'Tools, technologies, and hardware utilized by 4bin (Abin Binoy / BROHUHA).',
+    title: 'Insights & Repository | 4bin - Abin Binoy (BROHUHA)',
+    description: 'Projects, software repositories, and developer insights by 4bin (Abin Binoy / BROHUHA).',
+    ogTitle: 'Insights & Repository | 4bin - Abin Binoy (BROHUHA)',
+    ogDescription: 'Projects, software repositories, and developer insights by 4bin (Abin Binoy / BROHUHA).',
     ogImage: 'https://4bin.vercel.app/images/og-cover.jpg',
     twitterCard: 'summary_large_image',
     twitterImage: 'https://4bin.vercel.app/images/og-cover.jpg',

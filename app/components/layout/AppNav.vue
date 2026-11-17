@@ -27,7 +27,7 @@
           </li>
           <li>
             <AnimationTextShadow>
-              <NuxtLink to="/tools">Tools</NuxtLink>
+              <NuxtLink to="/insights">Insights</NuxtLink>
             </AnimationTextShadow>
           </li>
           <li>
