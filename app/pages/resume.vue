@@ -239,14 +239,19 @@
                   <span class="text-neutral-700 leading-relaxed">{{ cat.highlight }}</span>
                 </div>
 
-                <!-- Expanded Skills Badges (Increased Size & Nice Font) -->
-                <div class="flex flex-wrap gap-2.5 sm:gap-3">
+                <!-- Expanded Skills Badges (With Authentic Tech Brand Icons) -->
+                <div class="flex flex-wrap gap-2 sm:gap-2.5">
                   <span
                     v-for="skill in cat.skills"
                     :key="skill"
-                    class="px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold tracking-wide bg-neutral-100 hover:bg-black hover:text-white text-neutral-900 border border-neutral-200/80 transition-all cursor-default shadow-2xs"
+                    class="inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold tracking-wide bg-neutral-100 hover:bg-neutral-900 hover:text-white text-neutral-900 border border-neutral-200/80 transition-all cursor-default shadow-2xs group/badge"
                   >
-                    {{ skill }}
+                    <Icon
+                      v-if="skillIconMap[skill]"
+                      :name="skillIconMap[skill]"
+                      class="text-sm shrink-0"
+                    />
+                    <span>{{ skill }}</span>
                   </span>
                 </div>
               </div>
@@ -545,6 +550,48 @@
     { id: 'education', label: 'Education' },
     { id: 'contact-cta', label: 'Connect' },
   ];
+
+  // Authentic Tech Brand Icon Mapping
+  const skillIconMap = {
+    'Vue.js 3': 'logos:vue',
+    'Nuxt 3': 'logos:nuxt-icon',
+    'React.js': 'logos:react',
+    'Next.js': 'logos:nextjs-icon',
+    'TypeScript': 'logos:typescript-icon',
+    'JavaScript (ES6+)': 'logos:javascript',
+    'Tailwind CSS': 'logos:tailwindcss-icon',
+    'GSAP Animations': 'logos:greensock-icon',
+    'Vite': 'logos:vitejs',
+    'Pinia': 'logos:pinia',
+    'Node.js': 'logos:nodejs-icon',
+    'Express.js': 'simple-icons:express',
+    'Python': 'logos:python',
+    'FastAPI': 'logos:fastapi',
+    'RESTful APIs': 'solar:server-square-bold',
+    'GraphQL': 'logos:graphql',
+    'Microservices': 'solar:layers-bold',
+    'WebSockets': 'solar:transmission-bold',
+    'JWT & OAuth': 'solar:shield-keyhole-bold',
+    'Google Cloud (GCP)': 'logos:google-cloud',
+    'AWS': 'logos:aws',
+    'Docker': 'logos:docker-icon',
+    'Kubernetes': 'logos:kubernetes',
+    'GitHub Actions (CI/CD)': 'logos:github-actions',
+    'Cloud Run': 'logos:google-cloud-run',
+    'Pub/Sub': 'solar:mailbox-bold',
+    'Vercel': 'logos:vercel-icon',
+    'Linux / Bash': 'logos:bash-icon',
+    'Nginx': 'logos:nginx',
+    'PostgreSQL': 'logos:postgresql',
+    'MongoDB': 'logos:mongodb-icon',
+    'Redis': 'logos:redis',
+    'Firebase Firestore': 'logos:firebase',
+    'Supabase': 'logos:supabase-icon',
+    'Prisma ORM': 'logos:prisma',
+    'SQLite': 'logos:sqlite',
+    'Distributed Systems': 'solar:diagram-up-bold',
+    'Event-Driven Architecture': 'solar:bolt-circle-bold',
+  };
 
   const scrollToSection = (id) => {
     activeSection.value = id;
