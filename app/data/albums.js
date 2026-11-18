@@ -371,7 +371,7 @@ export const albums = [
     social: [
       {
         label: 'Visit Site',
-        link: 'https://abinbinoy.vercel.app',
+        link: 'https://abinbinoy-about.vercel.app',
         icon: 'lucide:globe',
       },
     ],
