@@ -75,6 +75,18 @@ Engineered with modern reactive single-page architecture, hardware-accelerated 6
 
 ---
 
+### // LICENSE
+
+This project, its architectural designs, visual assets, and platform contents are authored by **Abin Binoy** and licensed under the **[Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0)](https://creativecommons.org/licenses/by-nc-nd/4.0/)**.
+
+* **Attribution:** Credit must be given to **Abin Binoy (4bin / BROHUHA)** with link to [4bin.vercel.app](https://4bin.vercel.app).
+* **NonCommercial:** The material may not be used for commercial purposes.
+* **NoDerivatives:** If you remix, transform, or build upon the material, you may not distribute the modified material.
+
+For permissions beyond the scope of this license, direct inquiries to `abinbinoy2000@gmail.com`.
+
+---
+
 <div align="center">
-  <sub>&copy; 2024–2026 Abin Binoy (4bin / BROHUHA). All rights reserved.</sub>
+  <sub>&copy; 2024–2026 Abin Binoy (4bin / BROHUHA). Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>.</sub>
 </div>
