@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 160" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e0e0e" />
+      <stop offset="100%" stop-color="#050505" />
+    </linearGradient>
+
+    <style>
+      @keyframes flowDot {
+        0% { stroke-dashoffset: 200; }
+        100% { stroke-dashoffset: 0; }
+      }
+      @keyframes cardPulse {
+        0%, 100% { stroke-color: #262626; }
+        50% { stroke-color: #444444; }
+      }
+      .circuit-line {
+        stroke-dasharray: 6 12;
+        animation: flowDot 4s linear infinite;
+      }
+    </style>
+  </defs>
+
+  <!-- Card 1: Interactive Frontend -->
+  <g transform="translate(0, 0)">
+    <rect x="0" y="0" width="210" height="160" rx="12" fill="url(#cardBg)" stroke="#222222" stroke-width="1.2" />
+    <text x="18" y="32" fill="#555555" font-family="monospace" font-size="10" font-weight="700">01 // UI &amp; MOTION</text>
+    <text x="18" y="58" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="800">REACTIVE UIs</text>
+    <text x="18" y="86" fill="#888888" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500" line-height="1.4">
+      <tspan x="18" dy="0">Vue 3 Composition API</tspan>
+      <tspan x="18" dy="18">GSAP ScrollTrigger &amp; Split</tspan>
+      <tspan x="18" dy="18">Lenis 60fps Inertial Scroll</tspan>
+      <tspan x="18" dy="18">Tailwind CSS v4 Engine</tspan>
+    </text>
+  </g>
+
+  <!-- Connecting Stream 1-2 -->
+  <line x1="210" y1="80" x2="230" y2="80" stroke="#00ffc7" stroke-width="1.5" stroke-opacity="0.6" class="circuit-line" />
+
+  <!-- Card 2: Distributed Backend -->
+  <g transform="translate(230, 0)">
+    <rect x="0" y="0" width="210" height="160" rx="12" fill="url(#cardBg)" stroke="#222222" stroke-width="1.2" />
+    <text x="18" y="32" fill="#555555" font-family="monospace" font-size="10" font-weight="700">02 // BACKEND APIS</text>
+    <text x="18" y="58" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="800">DISTRIBUTED</text>
+    <text x="18" y="86" fill="#888888" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500">
+      <tspan x="18" dy="0">Node.js &amp; Express Services</tspan>
+      <tspan x="18" dy="18">Python Async Frameworks</tspan>
+      <tspan x="18" dy="18">TypeScript Microservices</tspan>
+      <tspan x="18" dy="18">REST &amp; WebSocket Streams</tspan>
+    </text>
+  </g>
+
+  <!-- Connecting Stream 2-3 -->
+  <line x1="440" y1="80" x2="460" y2="80" stroke="#00ffc7" stroke-width="1.5" stroke-opacity="0.6" class="circuit-line" />
+
+  <!-- Card 3: Security & Dynamic Instrumentation -->
+  <g transform="translate(460, 0)">
+    <rect x="0" y="0" width="210" height="160" rx="12" fill="url(#cardBg)" stroke="#222222" stroke-width="1.2" />
+    <text x="18" y="32" fill="#555555" font-family="monospace" font-size="10" font-weight="700">03 // AUDITING &amp; RE</text>
+    <text x="18" y="58" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="800">SECURITY LABS</text>
+    <text x="18" y="86" fill="#888888" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500">
+      <tspan x="18" dy="0">Android DEX / Smali Audit</tspan>
+      <tspan x="18" dy="18">Frida Dynamic Gadget Hook</tspan>
+      <tspan x="18" dy="18">APK Signing Verification</tspan>
+      <tspan x="18" dy="18">ADB Device Command Hub</tspan>
+    </text>
+  </g>
+
+  <!-- Connecting Stream 3-4 -->
+  <line x1="670" y1="80" x2="690" y2="80" stroke="#00ffc7" stroke-width="1.5" stroke-opacity="0.6" class="circuit-line" />
+
+  <!-- Card 4: Cloud & Deployment -->
+  <g transform="translate(690, 0)">
+    <rect x="0" y="0" width="210" height="160" rx="12" fill="url(#cardBg)" stroke="#222222" stroke-width="1.2" />
+    <text x="18" y="32" fill="#555555" font-family="monospace" font-size="10" font-weight="700">04 // CLOUD INFRA</text>
+    <text x="18" y="58" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="800">EDGE SCALE</text>
+    <text x="18" y="86" fill="#888888" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500">
+      <tspan x="18" dy="0">Google Cloud Platform</tspan>
+      <tspan x="18" dy="18">Docker Containerization</tspan>
+      <tspan x="18" dy="18">Vercel Global Edge CDN</tspan>
+      <tspan x="18" dy="18">Automated CI/CD Delivery</tspan>
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <!-- Dark Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050505" />
+      <stop offset="50%" stop-color="#0a0a0a" />
+      <stop offset="100%" stop-color="#020202" />
+    </linearGradient>
+
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="50%" stop-color="#cccccc" />
+      <stop offset="100%" stop-color="#ffffff" />
+    </linearGradient>
+
+    <linearGradient id="scanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </linearGradient>
+
+    <linearGradient id="laserGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ffc7" stop-opacity="0" />
+      <stop offset="50%" stop-color="#00ffc7" stop-opacity="1" />
+      <stop offset="100%" stop-color="#00ffc7" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Keyframe Animations -->
+    <style>
+      @keyframes spinClockwise {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      @keyframes spinCounter {
+        from { transform: rotate(360deg); }
+        to { transform: rotate(0deg); }
+      }
+      @keyframes pulseGlow {
+        0%, 100% { opacity: 0.35; transform: scale(1); }
+        50% { opacity: 0.85; transform: scale(1.05); }
+      }
+      @keyframes beamScan {
+        0% { transform: translateX(-900px); }
+        100% { transform: translateX(900px); }
+      }
+      @keyframes blinkBeacon {
+        0%, 100% { opacity: 1; fill: #00ffc7; }
+        50% { opacity: 0.2; fill: #00aa88; }
+      }
+      @keyframes textShimmer {
+        0% { stop-color: #ffffff; }
+        50% { stop-color: #888888; }
+        100% { stop-color: #ffffff; }
+      }
+      @keyframes radarSweep {
+        0% { stroke-dashoffset: 600; }
+        100% { stroke-dashoffset: 0; }
+      }
+
+      .outer-orbit {
+        transform-origin: 140px 140px;
+        animation: spinClockwise 24s linear infinite;
+      }
+      .middle-orbit {
+        transform-origin: 140px 140px;
+        animation: spinCounter 16s linear infinite;
+      }
+      .center-core {
+        transform-origin: 140px 140px;
+        animation: pulseGlow 4s ease-in-out infinite;
+      }
+      .scan-beam {
+        animation: beamScan 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      }
+      .live-beacon {
+        animation: blinkBeacon 1.8s ease-in-out infinite;
+      }
+      .radar-ring {
+        stroke-dasharray: 80 40;
+        animation: radarSweep 12s linear infinite;
+      }
+    </style>
+  </defs>
+
+  <!-- Container Box with Hairline Border -->
+  <rect x="1" y="1" width="898" height="278" rx="16" fill="url(#bgGrad)" stroke="#222222" stroke-width="1.5" />
+
+  <!-- Subtle Blueprint Tech Grid -->
+  <g stroke="#ffffff" stroke-opacity="0.03" stroke-width="1">
+    <line x1="0" y1="70" x2="900" y2="70" />
+    <line x1="0" y1="140" x2="900" y2="140" />
+    <line x1="0" y1="210" x2="900" y2="210" />
+    <line x1="260" y1="0" x2="260" y2="280" />
+    <line x1="480" y1="0" x2="480" y2="280" />
+    <line x1="700" y1="0" x2="700" y2="280" />
+  </g>
+
+  <!-- LEFT: Kinetic Concentric Rings System (BROHUHA Monogram) -->
+  <g id="logo-radar" transform="translate(0, 0)">
+    <!-- Radar Ambient Circles -->
+    <circle cx="140" cy="140" r="105" fill="none" stroke="#333333" stroke-width="1" stroke-dasharray="4 6" opacity="0.4" />
+    <circle cx="140" cy="140" r="85" fill="none" stroke="#444444" stroke-width="1" class="radar-ring" opacity="0.5" />
+
+    <!-- Center Glow -->
+    <circle cx="140" cy="140" r="28" fill="#00ffc7" fill-opacity="0.08" class="center-core" />
+
+    <!-- Animated Concentric Rings Group -->
+    <g transform="translate(-4, -4) scale(0.97)">
+      <!-- Outer Ring -->
+      <path class="outer-orbit" fill="#ffffff" fill-opacity="0.9" d="M166.06,1.69C87.37-10.4,13.79,43.58,1.69,122.26c-12.09,78.68,41.89,152.27,120.57,164.35,78.68,12.09,152.27-41.88,164.36-120.57C298.72,87.37,244.73,13.78,166.06,1.69ZM254.97,161.18c-9.4,61.19-66.64,103.19-127.84,93.78-61.2-9.41-103.17-66.65-93.77-127.84,9.4-61.18,66.63-103.18,127.83-93.77,61.2,9.41,103.18,66.65,93.78,127.83Z" transform="scale(0.55) translate(80, 80)" />
+      
+      <!-- Middle Ring -->
+      <path class="middle-orbit" fill="#cccccc" fill-opacity="0.85" d="M159.24,46.05c-54.18-8.32-104.85,28.84-113.18,83.03-8.33,54.2,28.84,104.85,83.03,113.18,54.18,8.32,104.85-28.83,113.18-83.03,8.32-54.19-28.85-104.84-83.03-113.18ZM199.18,152.61c-4.67,30.38-33.1,51.24-63.48,46.57-30.4-4.67-51.24-33.1-46.57-63.49,4.67-30.4,33.08-51.24,63.47-46.57,30.38,4.67,51.24,33.1,46.57,63.49h0Z" transform="scale(0.55) translate(80, 80)" />
+      
+      <!-- Center Ring -->
+      <path class="center-core" fill="#ffffff" fill-opacity="1" d="M150.64,102.09h-.01c-23.24-3.57-44.96,12.37-48.53,35.61-3.57,23.23,12.37,44.95,35.6,48.52,23.22,3.57,44.95-12.37,48.52-35.6s-12.36-44.96-35.58-48.53Z" transform="scale(0.55) translate(80, 80)" />
+    </g>
+  </g>
+
+  <!-- RIGHT: Typographic Branding & Live Coordinates -->
+  <g transform="translate(280, 0)">
+    <!-- Top System Status Pill -->
+    <g transform="translate(0, 48)">
+      <rect x="0" y="0" width="220" height="26" rx="13" fill="#141414" stroke="#2e2e2e" stroke-width="1" />
+      <circle cx="14" cy="13" r="4" class="live-beacon" />
+      <text x="26" y="17" fill="#cccccc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.5">PRODUCTION DEPLOYMENT</text>
+    </g>
+
+    <!-- Destination Badge Link Pill -->
+    <g transform="translate(390, 48)">
+      <rect x="0" y="0" width="180" height="26" rx="13" fill="#ffffff" />
+      <text x="18" y="17" fill="#000000" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="900" letter-spacing="0.8">4BIN.VERCEL.APP ↗</text>
+    </g>
+
+    <!-- Master Monogram / Name Headline -->
+    <text x="0" y="125" fill="url(#textGrad)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="44" font-weight="900" letter-spacing="-1.5">
+      4BIN <tspan fill="#666666" font-weight="400">//</tspan> ABIN BINOY
+    </text>
+
+    <!-- Role & Specialization -->
+    <text x="0" y="160" fill="#999999" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14.5" font-weight="700" letter-spacing="1">
+      FULL-STACK SOFTWARE ENGINEER &amp; CLOUD ARCHITECT
+    </text>
+
+    <!-- Technical Stack Capsule Indicators -->
+    <g transform="translate(0, 185)">
+      <!-- Pill 1 -->
+      <rect x="0" y="0" width="82" height="24" rx="6" fill="#161616" stroke="#2a2a2a" stroke-width="1" />
+      <text x="13" y="16" fill="#e5e5e5" font-family="monospace" font-size="10.5" font-weight="700">VUE 3</text>
+
+      <!-- Pill 2 -->
+      <rect x="90" y="0" width="82" height="24" rx="6" fill="#161616" stroke="#2a2a2a" stroke-width="1" />
+      <text x="103" y="16" fill="#e5e5e5" font-family="monospace" font-size="10.5" font-weight="700">NUXT 3</text>
+
+      <!-- Pill 3 -->
+      <rect x="180" y="0" width="80" height="24" rx="6" fill="#161616" stroke="#2a2a2a" stroke-width="1" />
+      <text x="195" y="16" fill="#e5e5e5" font-family="monospace" font-size="10.5" font-weight="700">GSAP</text>
+
+      <!-- Pill 4 -->
+      <rect x="268" y="0" width="92" height="24" rx="6" fill="#161616" stroke="#2a2a2a" stroke-width="1" />
+      <text x="279" y="16" fill="#e5e5e5" font-family="monospace" font-size="10.5" font-weight="700">PYTHON</text>
+
+      <!-- Pill 5 -->
+      <rect x="368" y="0" width="82" height="24" rx="6" fill="#161616" stroke="#2a2a2a" stroke-width="1" />
+      <text x="385" y="16" fill="#e5e5e5" font-family="monospace" font-size="10.5" font-weight="700">GCP</text>
+
+      <!-- Pill 6 -->
+      <rect x="458" y="0" width="112" height="24" rx="6" fill="#161616" stroke="#2a2a2a" stroke-width="1" />
+      <text x="470" y="16" fill="#00ffc7" font-family="monospace" font-size="10" font-weight="700">SUB-120MS</text>
+    </g>
+
+    <!-- Bottom Metric Metadata Line -->
+    <g transform="translate(0, 235)">
+      <text x="0" y="0" fill="#555555" font-family="monospace" font-size="11" font-weight="600" letter-spacing="0.5">
+        DEPLOYMENT: EDGE CACHED [GLOBAL]  |  EST. 2024–2026  |  KERALA, INDIA
+      </text>
+    </g>
+  </g>
+
+  <!-- Kinetic Laser Sweep Line along the bottom border -->
+  <g class="scan-beam">
+    <rect x="0" y="277" width="220" height="2" fill="url(#laserGrad)" />
+  </g>
+</svg>
